@@ -13,9 +13,25 @@ export const themeConstants = {
           },
           type: "light"
         },
-        tabs:{
-          
-        }
+        
+        typography: {
+
+          useNextVariants: true,
+         
+
+          h1: {
+            color: "#000000",
+          },
+          h2: {
+            color: "#000000",
+          },
+          h3: {
+            color: "#000000",
+          }
+        },
+
+        
+
       }),
       
       THEME_DARK: createMuiTheme({

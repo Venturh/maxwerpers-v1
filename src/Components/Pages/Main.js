@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import { Button, Box, Toolbar, Grid, AppBar, Typography, IconButton } from "@material-ui/core";
+import { Box, Button, Card , CardContent , CardActions , Container, Paper, IconButton , Toolbar, AppBar, Typography, Tabs, Tab } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
+
+import Resume from "./Resume"
+import Start from "./Start"
+import Grids from "./Grid"
 import { AnimatePresence, motion } from 'framer-motion'
 import { pageTransition, pageVariants} from '../../Constants/AnimationConstants'
 
-class Resume extends Component{
+
+class Main extends Component{
     constructor(props){
         super(props);
         this.state = {
         };
     }
 
-
-    
+    onScroll(info) {
+        console.log(info.offset, info.velocity)
+      }
     render() {
         return(
             <div>
@@ -22,7 +29,7 @@ class Resume extends Component{
                 variants={pageVariants}
                 transition={pageTransition}>
             <Box display="flex" justifyContent="flex-center" m={50} p={1}>
-                <Typography variant="h3" color="secondary">Lebenslauf</Typography>
+                <Typography variant="h3" color="secondary">Start</Typography>
             </Box>
             </motion.div>
             </div>
@@ -31,4 +38,4 @@ class Resume extends Component{
 
 
 
-export default Resume;
+export default Main;
