@@ -65,9 +65,9 @@ class Theme extends React.Component {
                     <Toolbar>
                         <section className={classes.rightToolbar}>
                         <Tabs  mr="auto" value={this.state.tabposition} onChange={this.handleTabChange} indicatorColor="secondary">
-                            <Tab disableRipple className={classes.tab} label="Über"   component={Link} to='/' />} />
-                            <Tab disableRipple className={classes.tab} label="Erfahrungen" component={Link} to='/resume' />
-                            <Tab disableRipple className={classes.tab} label="Kontakt" component={Link} to='/kontakt' />
+                            <Tab disableRipple className={classes.tab} label="Über"   component={Link}  to='/' />} />
+                            <Tab disableRipple className={classes.tab} label="Erfahrungen" component={Link}  to='/resume' />
+                            <Tab disableRipple className={classes.tab} label="Kontakt" component={Link}  to='/kontakt' />
                             <IconButton className={classes.nightmodetoggle} onClick={() => {this.props.changeTheme(this.props.theme.themeType);}}>
                              {this.props.theme.themeType == "light" ? <Brightness4Icon/> : <BrightnessHighIcon /> }
                             </IconButton>
@@ -76,12 +76,12 @@ class Theme extends React.Component {
                     </Toolbar>
                 </AppBar>
             </Box>
-                  <AnimatePresence>
+                  {/* <AnimatePresence> */}
                   <Switch location={this.props.location} key={this.props.location.pathname}>
                     <Route exact path="/" component={Main}/>
                     <Route path="/resume" component={Resume}/>
                   </Switch>
-                  </AnimatePresence>
+                  {/* //</AnimatePresence> */}
         </MuiThemeProvider>
       </div>
     );
