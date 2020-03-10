@@ -1,26 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useHistory,
+  useLocation
+} from "react-router-dom";
+import { Provider } from 'react-redux';
 import './App.css';
+import { createStore, applyMiddleware } from 'redux';
+import thunkMiddleware from 'redux-thunk';
+import reducer from './reducers/index';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from "./Components/Pages/Home"
+import Theme from "./Theme"
+import Navigation from './Components/Pages/Navigation';
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+import blueGrey from "@material-ui/core/colors/blueGrey";
+import lightGreen from "@material-ui/core/colors/lightGreen";
+import { Button } from 'react-bootstrap';
 
-function App() {
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(
+    thunkMiddleware)
+  );
+
+
+
+
+
+class App extends React.Component {
+
+render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>   
+    <Theme/>
+    </Provider>
   );
 }
+}
+
 
 export default App;
