@@ -11,30 +11,21 @@ import {
     Link,
   } from "react-router-dom";
   import Main from "./Components/Pages/Main"
+  import Start from "./Components/Pages/Start"
   import Resume from "./Components/Pages/Resume"
-import { AnimatePresence, motion } from 'framer-motion'
 import compose from 'recompose/compose';
-import { Box, Button, IconButton , Toolbar, AppBar, Typography, Tabs, Tab } from "@material-ui/core";
+import { Container, Box, Button, IconButton , Toolbar, AppBar, Typography, Tabs, Tab } from "@material-ui/core";
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
 import { withStyles } from '@material-ui/styles';
+import { HashLink } from 'react-router-hash-link';
+import Headroom from 'react-headroom';
+import Navigation from "./Components/Pages/Navigation";
+
 
 
 const styles = {
-  rightToolbar: {
-    marginLeft: 'auto',
-    marginRight: -12,
-  },
 
-  nightmodetoggle: {
-      borderRadius: 99,
-  },
-  tab: {
-      '&:focus': {
-          outline: 'none',
-      },
-      flexGrow: 1,
-  },
 };
 
 class Theme extends React.Component {
@@ -56,32 +47,22 @@ class Theme extends React.Component {
 
   render() {
     const { classes } = this.props;
+    let theme = this.props.theme.theme
     return (
-        <div>
-            <MuiThemeProvider theme={this.props.theme.theme}>
+        <div className={classes.root}>
+            <MuiThemeProvider theme={theme}>
                 <CssBaseline />
-                <Box>
-                <AppBar>
-                    <Toolbar>
-                        <section className={classes.rightToolbar}>
-                        <Tabs  mr="auto" value={this.state.tabposition} onChange={this.handleTabChange} indicatorColor="secondary">
-                            <Tab disableRipple className={classes.tab} label="Über"   component={Link}  to='/' />} />
-                            <Tab disableRipple className={classes.tab} label="Erfahrungen" component={Link}  to='/resume' />
-                            <Tab disableRipple className={classes.tab} label="Kontakt" component={Link}  to='/kontakt' />
-                            <IconButton className={classes.nightmodetoggle} onClick={() => {this.props.changeTheme(this.props.theme.themeType);}}>
-                             {this.props.theme.themeType == "light" ? <Brightness4Icon/> : <BrightnessHighIcon /> }
-                            </IconButton>
-                        </Tabs>
-                        </section>
-                    </Toolbar>
-                </AppBar>
-            </Box>
-                  {/* <AnimatePresence> */}
-                  <Switch location={this.props.location} key={this.props.location.pathname}>
-                    <Route exact path="/" component={Main}/>
-                    <Route path="/resume" component={Resume}/>
-                  </Switch>
-                  {/* //</AnimatePresence> */}
+                <Headroom>
+                  <Navigation />
+                  
+                </Headroom>
+                <Toolbar />
+                <Box display="flex" justifyContent="flex-center">
+                  <Start id="start"/>
+                </Box>
+                <Box id="resume" display="flex" justifyContent="flex-center" mt={200}>
+                  <Resume/>
+                </Box>
         </MuiThemeProvider>
       </div>
     );
