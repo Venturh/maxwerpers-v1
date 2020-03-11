@@ -7,6 +7,8 @@ import reducer from './reducers/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Theme from "./Theme"
 import { createBrowserHistory } from 'history';
+import { I18nextProvider } from "react-i18next";
+import i18n from "./translations/i18n";
 
 const store = createStore(
   reducer,
@@ -25,8 +27,10 @@ render(){
   const history = createBrowserHistory();
   return (
     <Provider store={store}>   
+      <I18nextProvider i18n={i18n}>
 
     <Theme/>
+    </I18nextProvider>
    
     </Provider>
   );

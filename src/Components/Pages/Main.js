@@ -23,7 +23,7 @@ class Main extends Component{
         const { classes } = this.props;
         const url = (name, wrap = false) => `${wrap ? 'url(' : ''}https://awv3node-homepage.surge.sh/build/assets/${name}.svg${wrap ? ')' : ''}`
         return(
-            <div className={classes.root}>
+            <div>
 
 
 

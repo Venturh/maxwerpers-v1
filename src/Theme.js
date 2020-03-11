@@ -40,10 +40,7 @@ class Theme extends React.Component {
   componentDidMount(){
       this.props.changeTheme("light")
   }
-  handleTabChange= (event, tabposition) => {
-    this.setState({ tabposition });
 
-  }
 
   render() {
     const { classes } = this.props;

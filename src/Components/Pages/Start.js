@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Avatar , Box, Button, ButtonBase,  Card , CardContent , CardActions, CardMedia , Container, Grid, Paper, IconButton , Toolbar, AppBar, Typography, Tabs, Tab } from "@material-ui/core";
 import { withStyles } from '@material-ui/styles';
 import avatar from '../../assets/avatar2.png';
-import { motion } from "framer-motion"
+import { withTranslation, Trans } from "react-i18next";
+import { compose } from 'recompose';
 
 const styles = {
     root: {
@@ -32,6 +33,10 @@ class Start extends Component{
     }
     render() {
         const { classes } = this.props;
+        const { t, i18n } = this.props;
+        const changeLanguage = lng => {
+          i18n.changeLanguage(lng);
+        };
         return(
             // <Paper id="start" className={classes.paper}>
             //     <Grid item>
@@ -59,12 +64,19 @@ class Start extends Component{
             //         </Grid>
             //     </Grid>>
             //     </Paper>
-
-                <Typography id="start" variant="h3" color="textSecondary">Hi. Ich bin Max</Typography>
+                <Container>
+                    
+        
+                    <Typography id="start" variant="h3" color="textSecondary"><Trans i18nKey="greeting"/></Typography>
+                </Container>
+                
 
         )}
 }
 
 
 
-export default withStyles(styles) (Start);
+export default compose(
+  withStyles(styles),
+  withTranslation()
+) (Start);
