@@ -1,112 +1,142 @@
-import React, { Component } from 'react';
-import { Box, Button, IconButton , Toolbar, AppBar, Menu, MenuItem , Typography, Tabs, Tab } from "@material-ui/core";
+import React, { useState } from 'react';
+import { Box, Button, IconButton, Toolbar, AppBar, Menu, MenuItem, Typography, Tabs, Tab } from '@material-ui/core';
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
-import { withStyles } from '@material-ui/styles';
+import { withStyles, makeStyles } from '@material-ui/styles';
 import { HashLink } from 'react-router-hash-link';
 import compose from 'recompose/compose';
-import { withRouter, Link } from "react-router-dom";
+import { withRouter, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { themeAction } from "../../actions/ThemeAction"
-import { withTranslation } from 'react-i18next';
+import { themeAction } from '../../actions/ThemeAction';
+import { useTranslation } from 'react-i18next';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import Bounce from 'react-reveal/Bounce';
 
-const styles = {
-    nightmodetoggle: {
-        borderRadius: 99,
-    },
-    tab: {
-        '&:focus': {
-            outline: 'none',
-        },
-        "&:hover": {
-            color: "inherit",
-            textDecoration: "inherit",
-          },
-        flexGrow: 1,
-    },
-  };
+const useStyles = makeStyles({
+	nightmodetoggle: {
+		borderRadius: 99
+	},
+	tab: {
+		'&:focus': {
+			outline: 'none'
+		},
+		'&:hover': {
+			color: 'inherit',
+			textDecoration: 'inherit'
+		},
+		flexGrow: 1
+	}
+});
 
+function Navigation(props) {
+	const classes = useStyles();
+	const [ tabposition, setTabposition ] = useState(0);
+	const [ anchorEl, setAnchorEl ] = useState(null);
+	const [ menuOpen, setMenuOpen ] = useState(false);
+	const { t, i18n } = useTranslation();
+	const ForwardNavLink = React.forwardRef((props, ref) => <HashLink {...props} innerRef={ref} />);
 
-class Navigation extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            tabposition: 0,
-            anchorEl: null
-        };
-        this.handleMenuOpen = this.handleMenuOpen.bind(this);
-    }
-    
+	const handleTabChange = (e, tabposition) => {
+		setTabposition(tabposition);
+	};
 
-    handleTabChange= (e,tabposition ) => {
-        this.setState({ tabposition });
-      }
+	const handleMenuOpen = (event) => {
+		setMenuOpen(true);
+		setAnchorEl(event.currentTarget);
+	};
 
-    handleMenuOpen(event){
-        this.setState({ anchorEl: event.currentTarget });
-    }
+	const handleMenuClose = (language) => {
+		console.log('la' + language);
+		try {
+			setAnchorEl(null);
+			i18n.changeLanguage(language);
+		} catch (error) {}
+	};
 
-    handleMenuClose(language){
-        this.setState( {anchorEl: null} );
-        this.props.i18n.changeLanguage(language);
-    }
+	const handleMenuClickAway = () => {
+		setMenuOpen(false);
+	};
 
-    render() {
-        const { classes, i18n } = this.props;
-        const ForwardNavLink = React.forwardRef((props, ref) => (
-            <HashLink {...props} innerRef={ref} />
-        ));
+	return (
+		<AppBar position="absolute">
+			<Box display="flex" ml="auto">
+				<Tabs value={tabposition} onChange={handleTabChange}>
+					<Tab
+						disableRipple
+						className={classes.tab}
+						label={<Bounce cascade>{t('Über')}</Bounce>}
+						component={ForwardNavLink}
+						smooth
+						to="/#start"
+					/>} />
+					<Tab
+						disableRipple
+						className={classes.tab}
+						label={t('Erfahrungen')}
+						component={ForwardNavLink}
+						smooth
+						to="/#resume"
+					/>
+					<Tab
+						disableRipple
+						className={classes.tab}
+						label={t('Projekte')}
+						component={ForwardNavLink}
+						smooth
+						to="/#resume"
+					/>
+					<Tab
+						disableRipple
+						className={classes.tab}
+						label={t('Kontakt')}
+						component={ForwardNavLink}
+						to="/kontakt"
+					/>
+				</Tabs>
 
-        return(
-            
-            <AppBar  position="absolute">
-                <Box display="flex" ml="auto" >
-                <Tabs value={this.state.tabposition} onChange={this.handleTabChange} >
-                    <Tab  disableRipple className={classes.tab} label="Über"   component={ForwardNavLink} smooth to='/#start' />} />
-                    <Tab disableRipple className={classes.tab} label="Erfahrungen" component={ForwardNavLink} smooth  to='/#resume' />
-                    <Tab disableRipple className={classes.tab} label="Kontakt" component={ForwardNavLink}  to='/kontakt' />
-                </Tabs>
-                <Box ml={-1} mr={1}>
-                    <IconButton  className={classes.nightmodetoggle} onClick={() => {this.props.changeTheme(this.props.theme.themeType);}}>
-                        {this.props.theme.themeType === "light" ? <Brightness4Icon/> : <BrightnessHighIcon /> }
-                    </IconButton>
-                </Box>
-                <Box ml={1} mr="auto" mt={0.5}>
-                    <Button label="Sprache" onClick={this.handleMenuOpen}> Sprache</Button>
-                    <Menu
-                    anchorEl={this.state.anchorEl}
-                    keepMounted
-                    open={Boolean(this.state.anchorEl)}
-                    >
-                        <MenuItem onClick={() => this.handleMenuClose("de")}>
-                            <Typography  color="textSecondary">Deutsch</Typography>
-                            </MenuItem>
-                            <MenuItem onClick={() => this.handleMenuClose("en")}>
-                            <Typography  color="textSecondary">English</Typography>
-                        </MenuItem>
-                    </Menu>
-                </Box>
+				<Box ml={-1} mr={1}>
+					<IconButton
+						className={classes.nightmodetoggle}
+						onClick={() => {
+							props.changeTheme(props.theme.themeType);
+						}}
+					>
+						{props.theme.themeType === 'light' ? <Brightness4Icon /> : <BrightnessHighIcon />}
+					</IconButton>
+				</Box>
 
-
-                </Box>
-        </AppBar>
-        )}
+				<ClickAwayListener onClickAway={handleMenuClickAway}>
+					<Box>
+						<Button label="Sprache" onClick={handleMenuOpen}>
+							{' '}
+							Sprache
+						</Button>
+						{menuOpen ? (
+							<Box ml={1} mr="auto" mt={0.5}>
+								<Menu anchorEl={anchorEl} open={Boolean(anchorEl)}>
+									<MenuItem onClick={() => handleMenuClose('de')}>
+										<Typography color="textSecondary">Deutsch</Typography>
+									</MenuItem>
+									<MenuItem onClick={() => handleMenuClose('en')}>
+										<Typography color="textSecondary">English</Typography>
+									</MenuItem>
+								</Menu>
+							</Box>
+						) : null}
+					</Box>
+				</ClickAwayListener>
+			</Box>
+		</AppBar>
+	);
 }
 
 function mapState(state) {
-    const { theme } = state;
-    return { theme  };
-  }
+	const { theme } = state;
+	return { theme };
+}
 
 const actionCreators = {
-changeTheme: themeAction.changeTheme
+	changeTheme: themeAction.changeTheme
 };
 
-
-
-export default compose(
-    withStyles(styles),
-    withTranslation(),
-    withRouter,
-    connect(mapState, actionCreators)  )(Navigation);
-  
+export default compose(withRouter, connect(mapState, actionCreators))(Navigation);

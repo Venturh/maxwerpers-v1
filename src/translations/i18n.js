@@ -6,10 +6,11 @@ import de from "./de";
 i18n.use(LanguageDetector).init({
   // we init with resources
   resources: {
+    de: de,
     en: en,
-    de: de
+
   },
-  fallbackLng: "en",
+  fallbackLng: "de",
   debug: false,
 
   // have a common namespace used around the full app
