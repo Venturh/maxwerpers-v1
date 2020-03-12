@@ -1,4 +1,4 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 
 const light = createMuiTheme({
 	palette: {
@@ -15,7 +15,7 @@ const light = createMuiTheme({
 		textTransform: 'none',
 		useNextVariants: true
 	}
-});
+})
 
 const dark = createMuiTheme({
 	palette: {
@@ -32,9 +32,9 @@ const dark = createMuiTheme({
 		textTransform: 'none',
 		useNextVariants: true
 	}
-});
+})
 
 export const themeConstants = {
 	THEME_LIGHT: responsiveFontSizes(light),
 	THEME_DARK: responsiveFontSizes(dark)
-};
+}
