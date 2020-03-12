@@ -49,10 +49,8 @@ class Theme extends React.Component {
         <div className={classes.root}>
             <MuiThemeProvider theme={theme}>
                 <CssBaseline />
-                <Headroom>
                   <Navigation />
                   
-                </Headroom>
                 <Toolbar />
                 <Box display="flex" justifyContent="flex-center">
                   <Start id="start"/>

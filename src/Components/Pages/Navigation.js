@@ -11,11 +11,6 @@ import { themeAction } from "../../actions/ThemeAction"
 import { withTranslation } from 'react-i18next';
 
 const styles = {
-    rightToolbar: {
-      marginLeft: 'auto',
-      marginRight: -12,
-    },
-  
     nightmodetoggle: {
         borderRadius: 99,
     },
@@ -23,6 +18,10 @@ const styles = {
         '&:focus': {
             outline: 'none',
         },
+        "&:hover": {
+            color: "inherit",
+            textDecoration: "inherit",
+          },
         flexGrow: 1,
     },
   };
@@ -54,38 +53,42 @@ class Navigation extends Component{
 
     render() {
         const { classes, i18n } = this.props;
-        const changeLanguage = lng => {
-            i18n.changeLanguage(lng);
-          };
+        const ForwardNavLink = React.forwardRef((props, ref) => (
+            <HashLink {...props} innerRef={ref} />
+        ));
 
         return(
+            
             <AppBar  position="absolute">
-            <Toolbar>
-                <Box className={classes.rightToolbar}>
-                <Tabs  mr="auto" value={this.state.tabposition} onChange={this.handleTabChange} indicatorColor="secondary">
-                    <Tab  disableRipple className={classes.tab} label="Über"   component={HashLink} smooth to='/#start' />} />
-                    <Tab disableRipple className={classes.tab} label="Erfahrungen" component={HashLink} smooth  to='/#resume' />
-                    <Tab disableRipple className={classes.tab} label="Kontakt" component={Link}  to='/kontakt' />
-                    <IconButton className={classes.nightmodetoggle} onClick={() => {this.props.changeTheme(this.props.theme.themeType);}}>
-                     {this.props.theme.themeType == "light" ? <Brightness4Icon/> : <BrightnessHighIcon /> }
+                <Box display="flex" ml="auto" >
+                <Tabs value={this.state.tabposition} onChange={this.handleTabChange} >
+                    <Tab  disableRipple className={classes.tab} label="Über"   component={ForwardNavLink} smooth to='/#start' />} />
+                    <Tab disableRipple className={classes.tab} label="Erfahrungen" component={ForwardNavLink} smooth  to='/#resume' />
+                    <Tab disableRipple className={classes.tab} label="Kontakt" component={ForwardNavLink}  to='/kontakt' />
+                </Tabs>
+                <Box ml={-1} mr={1}>
+                    <IconButton  className={classes.nightmodetoggle} onClick={() => {this.props.changeTheme(this.props.theme.themeType);}}>
+                        {this.props.theme.themeType === "light" ? <Brightness4Icon/> : <BrightnessHighIcon /> }
                     </IconButton>
+                </Box>
+                <Box ml={1} mr="auto" mt={0.5}>
                     <Button label="Sprache" onClick={this.handleMenuOpen}> Sprache</Button>
                     <Menu
-                    id="simple-menu"
                     anchorEl={this.state.anchorEl}
                     keepMounted
                     open={Boolean(this.state.anchorEl)}
                     >
                         <MenuItem onClick={() => this.handleMenuClose("de")}>
-                        <Typography  color="textSecondary">Deutsch</Typography>
-                        </MenuItem>
-                        <MenuItem onClick={() => this.handleMenuClose("en")}>
-                        <Typography  color="textSecondary">English</Typography>
+                            <Typography  color="textSecondary">Deutsch</Typography>
+                            </MenuItem>
+                            <MenuItem onClick={() => this.handleMenuClose("en")}>
+                            <Typography  color="textSecondary">English</Typography>
                         </MenuItem>
                     </Menu>
-                </Tabs>
                 </Box>
-            </Toolbar>
+
+
+                </Box>
         </AppBar>
         )}
 }
