@@ -12,10 +12,9 @@ import {
 	useHistory,
 	useLocation
 } from 'react-router-dom'
-import { history } from './Constants/History'
 
 ReactDOM.render(
-	<Router history={history}>
+	<Router>
 		<App />
 	</Router>,
 	document.getElementById('root')

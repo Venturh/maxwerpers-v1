@@ -4,8 +4,8 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import { connect } from 'react-redux'
 import { themeAction } from './actions/ThemeAction'
 import { BrowserRouter as Router, Switch, Route, withRouter, Link } from 'react-router-dom'
-import Start from './Components/Pages/Start'
-import Resume from './Components/Pages/Resume'
+import Start from './components/Start'
+import Resume from './components/Resume'
 import compose from 'recompose/compose'
 import {
 	Container,
@@ -19,7 +19,7 @@ import {
 	Tab
 } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
-import Navigation from './Components/Pages/Navigation'
+import Navigation from './components/Navigation'
 
 const styles = {}
 

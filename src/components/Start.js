@@ -19,7 +19,6 @@ import {
 	Tab
 } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
-import avatar from '../../assets/avatar2.png'
 import { withTranslation, Trans } from 'react-i18next'
 import { compose } from 'recompose'
 import Slide from 'react-reveal/Slide'
