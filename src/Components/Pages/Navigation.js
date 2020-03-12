@@ -93,7 +93,7 @@ function Navigation(props) {
 
 	return (
 		<Slide appear={false} direction='down' in={!trigger}>
-			<AppBar>
+			<AppBar position='sticky'>
 				<Box display='flex' ml='auto'>
 					<Tabs value={tabposition} onChange={handleTabChange}>
 						<Tab
@@ -118,7 +118,7 @@ function Navigation(props) {
 							label={t('Projekte')}
 							component={ForwardNavLink}
 							smooth
-							to='/#resume'
+							to='/#lol'
 						/>
 						<Tab
 							disableRipple
@@ -143,13 +143,13 @@ function Navigation(props) {
 					</Box>
 
 					<ClickAwayListener onClickAway={handleMenuClickAway}>
-						<Box>
+						<Box ml={1} mr={2} mt={0.5}>
 							<Button label='Sprache' onClick={handleMenuOpen}>
 								{' '}
 								Sprache
 							</Button>
 							{
-								menuOpen ? <Box ml={1} mr='auto' mt={0.5}>
+								menuOpen ? <Box>
 									<Menu anchorEl={anchorEl} open={Boolean(anchorEl)}>
 										<MenuItem onClick={() => handleMenuClose('de')}>
 											<Typography color='textSecondary'>Deutsch</Typography>

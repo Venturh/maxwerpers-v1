@@ -1,25 +1,37 @@
-import React, { Component } from 'react';
-import { Button, Box, Toolbar, Grid, AppBar, Typography, IconButton } from '@material-ui/core';
-import { AnimatePresence, motion } from 'framer-motion';
-import { pageTransition, pageVariants } from '../../Constants/AnimationConstants';
+import React, { Component } from 'react'
+import {
+	Button,
+	Box,
+	Toolbar,
+	Grid,
+	AppBar,
+	Typography,
+	IconButton,
+	Paper,
+	Card
+} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import Zoom from 'react-reveal/Zoom'
 
-class Resume extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {};
+const useStyles = makeStyles((theme) => ({
+	root: {
+		display: 'flex',
+		width: '100vw',
+		height: '50vw'
 	}
+}))
 
-	render() {
-		return (
-			<div>
-				<Box>
-					<Typography variant="h3" color="secondary">
-						Lebenslauf
-					</Typography>
-				</Box>
-			</div>
-		);
-	}
+function Resume() {
+	const classes = useStyles()
+	return (
+		<Paper id='resume' className={classes.root}>
+			<Zoom>
+				<Typography variant='h3' color='secondary'>
+					Lebenslauf
+				</Typography>
+			</Zoom>
+		</Paper>
+	)
 }
 
-export default Resume;
+export default Resume

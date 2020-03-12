@@ -1,32 +1,33 @@
-import i18n from "i18next";
-import LanguageDetector from "i18next-browser-languagedetector";
-import en from "./en";
-import de from "./de";
+import i18n from 'i18next'
+import LanguageDetector from 'i18next-browser-languagedetector'
+import en from './en'
+import de from './de'
 
 i18n.use(LanguageDetector).init({
-  // we init with resources
-  resources: {
-    de: de,
-    en: en,
+	// we init with resources
+	resources: {
+		de: de,
+		en: en
+	},
+	fallbackLng: 'de',
+	debug: false,
 
-  },
-  fallbackLng: "de",
-  debug: false,
+	// have a common namespace used around the full app
+	ns: [
+		'translations'
+	],
+	defaultNS: 'translations',
 
-  // have a common namespace used around the full app
-  ns: ["translations"],
-  defaultNS: "translations",
+	keySeparator: false, // we use content as keys
 
-  keySeparator: false, // we use content as keys
+	interpolation: {
+		escapeValue: false, // not needed for react!!
+		formatSeparator: ','
+	},
 
-  interpolation: {
-    escapeValue: false, // not needed for react!!
-    formatSeparator: ","
-  },
+	react: {
+		wait: true
+	}
+})
 
-  react: {
-    wait: true
-  }
-});
-
-export default i18n;
+export default i18n
