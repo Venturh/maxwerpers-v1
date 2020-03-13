@@ -13,6 +13,9 @@ const light = createMuiTheme({
 		},
 		type: 'light'
 	},
+	gradients: {
+		danger: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+	},
 	typography: {
 		fontFamily: "'Montserrat', sans-serif",
 		textTransform: 'none',
@@ -21,6 +24,9 @@ const light = createMuiTheme({
 })
 
 const dark = createMuiTheme({
+	status: {
+		danger: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+	},
 	palette: {
 		primary: {
 			main: '#262833'

@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core'
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
-import { withStyles, makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles'
 import { HashLink } from 'react-router-hash-link'
 import compose from 'recompose/compose'
 import { withRouter, Link } from 'react-router-dom'

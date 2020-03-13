@@ -20,8 +20,11 @@ import {
 } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
 import Navigation from './components/Navigation'
+import { themeConstants } from './constants/ThemeConstants'
 
-const styles = {}
+const styles = {
+	root: {}
+}
 
 class Theme extends React.Component {
 	constructor(props) {
@@ -31,7 +34,7 @@ class Theme extends React.Component {
 		}
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		this.props.changeTheme('light')
 	}
 
@@ -40,7 +43,7 @@ class Theme extends React.Component {
 		let theme = this.props.theme.theme
 		return (
 			<div className={classes.root}>
-				<MuiThemeProvider theme={theme}>
+				<MuiThemeProvider theme={themeConstants.THEME_DARK}>
 					<CssBaseline />
 					<Navigation />
 					<Start />

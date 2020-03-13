@@ -18,37 +18,27 @@ import {
 	Tabs,
 	Tab
 } from '@material-ui/core'
-import { withStyles } from '@material-ui/styles'
-import { withTranslation, Trans } from 'react-i18next'
+import { makeStyles } from '@material-ui/styles'
+import { useTranslation } from 'react-i18next'
 import { compose } from 'recompose'
 import Slide from 'react-reveal/Slide'
 
-const styles = {
+const useStyles = makeStyles((theme) => ({
 	root: {
-		width: '100vw',
-		height: '50vw'
+		height: '100vh',
+		minWidth: '100vh',
+		background: theme.status.danger
 	}
-}
+}))
 
-class Start extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {}
-	}
-	render() {
-		const { classes } = this.props
-		const { t, i18n } = this.props
-		const changeLanguage = (lng) => {
-			i18n.changeLanguage(lng)
-		}
-		return (
-			<Paper id='start' variant='outlined' square className={classes.root}>
-				<Typography id='start' variant='h3' color='textSecondary'>
-					<Trans i18nKey='greeting' />
-				</Typography>
-			</Paper>
-		)
-	}
+export default function Start() {
+	const classes = useStyles()
+	const { t, i18n } = useTranslation()
+	return (
+		<Paper id='start' variant='outlined' square className={classes.root}>
+			<Typography id='start' variant='h3' color='textSecondary'>
+				Hallo
+			</Typography>
+		</Paper>
+	)
 }
-
-export default compose(withStyles(styles), withTranslation())(Start)
