@@ -1,6 +1,9 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 
 const light = createMuiTheme({
+	status: {
+		danger: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+	},
 	palette: {
 		background: {
 			default: '#a7ffeb'

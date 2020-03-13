@@ -69,6 +69,7 @@ function Navigation(props) {
 	const { t, i18n } = useTranslation()
 	const trigger = useScrollTrigger()
 	const ForwardNavLink = React.forwardRef((props, ref) => <HashLink {...props} innerRef={ref} />)
+	const { themeToggle, value } = props
 
 	const handleTabChange = (e, tabposition) => {
 		setTabposition(tabposition)
@@ -130,12 +131,7 @@ function Navigation(props) {
 					</Tabs>
 
 					<Box ml={-1} mr={1}>
-						<IconButton
-							className={classes.nightmodetoggle}
-							onClick={() => {
-								props.changeTheme(props.theme.themeType)
-							}}
-						>
+						<IconButton className={classes.nightmodetoggle} onClick={themeToggle}>
 							{
 								props.theme.themeType === 'light' ? <Brightness4Icon /> :
 								<BrightnessHighIcon />}

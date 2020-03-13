@@ -7,17 +7,6 @@ import { BrowserRouter as Router, Switch, Route, withRouter, Link } from 'react-
 import Start from './components/Start'
 import Resume from './components/Resume'
 import compose from 'recompose/compose'
-import {
-	Container,
-	Box,
-	Button,
-	IconButton,
-	Toolbar,
-	AppBar,
-	Typography,
-	Tabs,
-	Tab
-} from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
 import Navigation from './components/Navigation'
 import { themeConstants } from './constants/ThemeConstants'
@@ -30,22 +19,31 @@ class Theme extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			tabposition: 0
+			tabposition: 0,
+			theme: themeConstants.THEME_DARK
 		}
+		this.themeToggle = this.themeToggle.bind(this)
 	}
 
 	componentWillMount() {
 		this.props.changeTheme('light')
 	}
 
+	themeToggle() {
+
+			this.state.theme === themeConstants.THEME_DARK ? this.setState({
+				theme: themeConstants.THEME_LIGHT
+			}) :
+			this.setState({ theme: themeConstants.THEME_DARK })
+	}
+
 	render() {
 		const { classes } = this.props
-		let theme = this.props.theme.theme
 		return (
 			<div className={classes.root}>
-				<MuiThemeProvider theme={themeConstants.THEME_DARK}>
+				<MuiThemeProvider theme={this.state.theme}>
 					<CssBaseline />
-					<Navigation />
+					<Navigation themeToggle={this.themeToggle} />
 					<Start />
 					<Resume />
 				</MuiThemeProvider>
