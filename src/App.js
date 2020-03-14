@@ -1,32 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Provider } from 'react-redux'
-import './App.css'
 import { createStore, applyMiddleware } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import reducer from './reducers/index'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import Theme from './Theme'
-import { createBrowserHistory } from 'history'
 import { I18nextProvider } from 'react-i18next'
 import i18n from './translations/i18n'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { MuiThemeProvider } from '@material-ui/core/styles'
 
-const store = createStore(
-	reducer,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-	applyMiddleware(thunkMiddleware)
-)
+import Start from './components/Start'
+import Resume from './components/Resume'
+import Navigation from './components/Navigation'
+import { themeConstants } from './constants/ThemeConstants'
 
-class App extends React.Component {
-	render() {
-		const history = createBrowserHistory()
-		return (
-			<Provider store={store}>
-				<I18nextProvider i18n={i18n}>
-					<Theme />
-				</I18nextProvider>
-			</Provider>
-		)
+function App() {
+	const store = createStore(
+		reducer,
+		window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+		applyMiddleware(thunkMiddleware)
+	)
+	const [
+		theme,
+		setTheme
+	] = useState(themeConstants.THEME_DARK)
+
+	const themeToggle = () => {
+
+			theme === themeConstants.THEME_DARK ? setTheme(themeConstants.THEME_LIGHT) :
+			setTheme(themeConstants.THEME_DARK)
+		const a = 'd'
+		return a
 	}
+
+	return (
+		<Provider store={store}>
+			<I18nextProvider i18n={i18n}>
+				<MuiThemeProvider theme={theme}>
+					<CssBaseline />
+					<Navigation themeToggle={themeToggle} />
+					<Start />
+					<Resume />
+				</MuiThemeProvider>
+			</I18nextProvider>
+		</Provider>
+	)
 }
 
 export default App

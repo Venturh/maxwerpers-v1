@@ -52,7 +52,10 @@ function HideOnScroll(props) {
 	)
 }
 
-function Navigation(props) {
+/**Todo: Togglebutton in theme setzten
+ */
+
+function Navigation(props, theme) {
 	const classes = useStyles()
 	const [
 		tabposition,
@@ -133,7 +136,7 @@ function Navigation(props) {
 					<Box ml={-1} mr={1}>
 						<IconButton className={classes.nightmodetoggle} onClick={themeToggle}>
 							{
-								props.theme.themeType === 'light' ? <Brightness4Icon /> :
+								theme.themeType === 'light' ? <Brightness4Icon /> :
 								<BrightnessHighIcon />}
 						</IconButton>
 					</Box>

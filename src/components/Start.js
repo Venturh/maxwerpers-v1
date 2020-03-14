@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme) => ({
 	}
 }))
 
-export default function Start() {
+export default function Start(props) {
+	console.log('Zheme: ' + useStyles.theme)
 	const classes = useStyles()
 	const { t, i18n } = useTranslation()
 	return (
