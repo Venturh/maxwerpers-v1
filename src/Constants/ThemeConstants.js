@@ -23,6 +23,15 @@ const light = createMuiTheme({
 		fontFamily: "'Montserrat', sans-serif",
 		textTransform: 'none',
 		useNextVariants: true
+	},
+	breakpoints: {
+		values: {
+			xs: 0,
+			sm: 600,
+			md: 800,
+			lg: 1024,
+			xl: 1600
+		}
 	}
 })
 
@@ -46,6 +55,15 @@ const dark = createMuiTheme({
 		fontFamily: "'Montserrat', sans-serif",
 		textTransform: 'none',
 		useNextVariants: true
+	},
+	breakpoints: {
+		values: {
+			xs: 0,
+			sm: 600,
+			md: 800,
+			lg: 1024,
+			xl: 1600
+		}
 	}
 })
 
