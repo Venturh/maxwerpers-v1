@@ -1,26 +1,22 @@
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
+import deepPurple from '@material-ui/core/colors/deepPurple'
+import teal from '@material-ui/core/colors/teal'
 
 const light = createMuiTheme({
-	status: {
-		danger: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+	gradient: {
+		start: 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)'
 	},
 	palette: {
-		background: {
-			default: '#a7ffeb'
-		},
 		primary: {
-			main: '#a7ffeb'
+			main: deepPurple[400]
 		},
 		secondary: {
-			main: '#80deea'
+			main: teal.A700
 		},
 		type: 'light'
 	},
-	gradients: {
-		danger: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
-	},
 	typography: {
-		fontFamily: "'Montserrat', sans-serif",
+		fontFamily: "'Roboto', sans-serif",
 		textTransform: 'none',
 		useNextVariants: true
 	},
@@ -36,23 +32,20 @@ const light = createMuiTheme({
 })
 
 const dark = createMuiTheme({
-	status: {
-		danger: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+	gradient: {
+		start: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
 	},
 	palette: {
 		primary: {
-			main: '#262833'
+			main: deepPurple[300]
 		},
 		secondary: {
-			main: '#4ACFAC'
+			main: teal['A200']
 		},
-		type: 'dark',
-		background: {
-			//default: '#757575'
-		}
+		type: 'dark'
 	},
 	typography: {
-		fontFamily: "'Montserrat', sans-serif",
+		fontFamily: "'Roboto', sans-serif",
 		textTransform: 'none',
 		useNextVariants: true
 	},

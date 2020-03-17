@@ -50,8 +50,7 @@ const useStyles = makeStyles((theme) => ({
 		},
 		'&:hover': {
 			color: 'inherit',
-			textDecoration: 'inherit',
-			background: '#f00'
+			textDecoration: 'inherit'
 		}
 	},
 	indicator: {
@@ -79,7 +78,7 @@ function Navigation({ themeToggle }) {
 
 	return (
 		<Box className={classes.nav}>
-			<Button>Placeholder</Button>
+			<Button>_maxwerpers</Button>
 			<Box className={classes.tabItems}>
 				<Tabs
 					className={classes.tabItems}
@@ -90,7 +89,7 @@ function Navigation({ themeToggle }) {
 					<Tab
 						disableRipple
 						className={classes.tab}
-						label={<Bounce cascade>{t('Über')}</Bounce>}
+						label={t('Über')}
 						component={ForwardNavLink}
 						smooth
 						to='/#start'
@@ -116,7 +115,7 @@ function Navigation({ themeToggle }) {
 						className={classes.tab}
 						label={t('Kontakt')}
 						component={ForwardNavLink}
-						to='/kontakt'
+						to='/#kontakt'
 					/>
 				</Tabs>
 				<Language />

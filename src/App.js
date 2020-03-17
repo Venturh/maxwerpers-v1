@@ -13,6 +13,7 @@ import Navbar from './components/Navigation/Navbar'
 import Start from './components/Start'
 import Resume from './components/Resume'
 import { themeConstants } from './constants/ThemeConstants'
+import { Toolbar } from '@material-ui/core'
 
 function App() {
 	const store = createStore(
@@ -38,7 +39,7 @@ function App() {
 					<MuiThemeProvider theme={theme}>
 						<CssBaseline />
 						<Navbar themeToggle={themeToggle} />
-						<Start />
+						<Start id='starting' />
 						<Resume />
 					</MuiThemeProvider>
 				</I18nextProvider>

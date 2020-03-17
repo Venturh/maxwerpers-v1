@@ -11,7 +11,7 @@ export default function ButtonAppBar({ themeToggle }) {
 	const classes = useStyles()
 	return (
 		<Slide appear={false} direction='down' in={!trigger}>
-			<AppBar position='sticky'>
+			<AppBar color='default'>
 				<Toolbar>
 					<Box width='100%' height='100%' className={classes.root}>
 						<Hidden xsDown>

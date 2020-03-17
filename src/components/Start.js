@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
+import './Start.css'
 import {
 	Avatar,
 	Box,
@@ -22,38 +23,94 @@ import { makeStyles } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
 import { compose } from 'recompose'
 import Slide from 'react-reveal/Slide'
-import welcomeImage from '../assets/notebook.svg'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import welcomeImage from '../assets/introCover.svg'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import LinkedInIcon from '@material-ui/icons/LinkedIn'
+import Bounce from 'react-reveal/Bounce'
 
 const useStyles = makeStyles((theme) => ({
-	root: {
+	page: {
+		display: 'flex',
+		alignItems: 'center',
+		width: '90%',
 		height: '100vh',
-		minWidth: '100vh',
-		background: theme.status.danger
+		margin: 'auto'
 	},
-	welcomeimage: {
-		width: '50%',
-		'@media (min-width: 780px)': {
-			width: '80%'
-		}
+	intro: { flex: 1 },
+	introTextWrap: {},
+
+	introTextHeader: {},
+	introTextSubtitle: {},
+	intoBtn: {
+		margin: theme.spacing(1),
+		borderRadius: '5em'
+	},
+	coverImgWrap: {
+		flex: 1
+	},
+	coverImg: {
+		height: '80vh'
 	}
 }))
 
 export default function Start(props) {
-	const matches = useMediaQuery('(min-width:600px)')
-
 	const classes = useStyles()
 	const { t, i18n } = useTranslation()
+	const [
+		show,
+		setShow
+	] = useState(true)
+
+	const [
+		text,
+		setText
+	] = useState('student')
+
+	useEffect(() => {
+		const textPool = [
+			'frontdev',
+			'backdev',
+			'student'
+		]
+		let i = 0
+		const interval = setInterval(() => {
+			setShow(false)
+			if (i >= textPool.length) {
+				i = 0
+			}
+			setShow(true)
+			setText(() => textPool[i++])
+		}, 3000)
+
+		return () => {
+			clearInterval(interval)
+		}
+	}, [])
+
 	return (
-		<Box id='start'>
-			<Paper variant='outlined' square className={classes.root}>
-				<Typography id='start' variant='h3' color='textSecondary'>
-					{t('welcomeMsg')}
-				</Typography>
-				<Container>
-					<img width='100px' height='100px' className={classes.welcomeimage} src={welcomeImage} />
-				</Container>
-			</Paper>
-		</Box>
+		<React.Fragment>
+			<Toolbar id='start' />
+			<Box className={classes.page}>
+				<Box id='intro' className={classes.intro}>
+					<Box textAlign='center' id='intro-text' className={classes.introTextWrap}>
+						<Typography id='start' variant='h3' color='primary'>
+							{t('welcomeMsg')}
+						</Typography>
+						<Typography component={'span'} variant='h4' color='textSecondary'>
+							<Bounce when={show}>{t(JSON.stringify(text).replace(/"/g, ''))}</Bounce>
+						</Typography>
+						<Button variant='outlined' color='primary' className={classes.intoBtn}>
+							Projects
+						</Button>
+						<Button variant='outlined' color='primary' className={classes.intoBtn}>
+							Resume
+						</Button>
+					</Box>
+				</Box>
+				<Box className={classes.coverImgWrap}>
+					<img className={classes.coverImg} src={welcomeImage} />
+				</Box>
+			</Box>
+		</React.Fragment>
 	)
 }

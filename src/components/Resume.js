@@ -16,8 +16,9 @@ import Zoom from 'react-reveal/Zoom'
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
-		width: '100vw',
-		height: '50vw'
+		minHeight: '100vh',
+		Width: '100vw',
+		background: theme.gradient.start
 	}
 }))
 

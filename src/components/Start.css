@@ -1,0 +1,23 @@
+.typewriter {
+	display: flex;
+}
+.typing {
+	position: relative;
+	margin-left: 10px;
+}
+
+.typing::after {
+	content: "";
+	position: absolute;
+	border-right: 2px solid white;
+	animation: blink 0.5s infinite ease;
+}
+
+@keyframes blink {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
