@@ -78,7 +78,9 @@ export default function WelcomePage(props) {
 								size='large'
 								variant='contained'
 								color='secondary'
-								href='/#projects'
+								component={ForwardNavLink}
+								smooth
+								to='/#projects'
 								className={classes.infoBtn}
 							>
 								{t('projects')}
@@ -89,7 +91,7 @@ export default function WelcomePage(props) {
 								color='primary'
 								component={ForwardNavLink}
 								smooth
-								to='/#resume'
+								to='/#experience'
 								className={classes.infoBtn}
 							>
 								{t('Experience')}
