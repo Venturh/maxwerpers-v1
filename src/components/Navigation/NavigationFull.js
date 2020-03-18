@@ -18,14 +18,7 @@ import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import { makeStyles } from '@material-ui/styles'
 import { HashLink } from 'react-router-hash-link'
-import compose from 'recompose/compose'
-import { withRouter, Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { themeAction } from '../../actions/ThemeAction'
 import { useTranslation } from 'react-i18next'
-import Bounce from 'react-reveal/Bounce'
-import useScrollTrigger from '@material-ui/core/useScrollTrigger'
-import LanguageIcon from '@material-ui/icons/Language'
 import TranslateIcon from '@material-ui/icons/TranslateRounded'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMoreRounded'
 
@@ -39,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		justifyContent: 'space-around'
 	},
-	tabs: {},
 	tab: {
 		display: 'flex',
 		justifyContent: 'space-between',
@@ -80,12 +72,7 @@ function Navigation({ themeToggle }) {
 		<Box className={classes.nav}>
 			<Button>_maxwerpers</Button>
 			<Box className={classes.tabItems}>
-				<Tabs
-					className={classes.tabItems}
-					TabIndicatorProps={{ style: {} }}
-					value={tabposition}
-					onChange={handleTabChange}
-				>
+				<Tabs value={tabposition} onChange={handleTabChange}>
 					<Tab
 						disableRipple
 						className={classes.tab}
@@ -180,4 +167,4 @@ const ToggleTheme = ({ themeToggle }) => {
 	)
 }
 
-export default compose(withRouter)(Navigation)
+export default Navigation

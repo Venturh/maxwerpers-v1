@@ -1,8 +1,8 @@
 import React from 'react'
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 import { Box, Hidden, Toolbar, Slide, AppBar } from '@material-ui/core'
-import NavigationMobile from './NavigationMobile'
-import NavigationFull from './NavigationFull'
+import NavigationMobile from '../components/Navigation/NavigationMobile'
+import NavigationFull from '../components/Navigation/NavigationFull'
 import { makeStyles } from '@material-ui/styles'
 const useStyles = makeStyles((theme) => ({}))
 
