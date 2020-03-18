@@ -6,7 +6,8 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 
 import Navbar from './pages/Navbar'
 import Welcome from './pages/Welcome'
-import Resume from './components/Resume'
+import Projects from './pages/Projects'
+import Resume from './pages/Resume'
 import { themeConstants } from './constant/ThemeConstants'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import deepPurple from '@material-ui/core/colors/deepPurple'
@@ -14,8 +15,8 @@ import teal from '@material-ui/core/colors/teal'
 
 function App() {
 	const [
-		prefersDarkMode,
-		setPrefersDarkMode
+		themeType,
+		setthemeType
 	] = useState('dark')
 
 	const dark = createMuiTheme({
@@ -29,12 +30,7 @@ function App() {
 			secondary: {
 				main: teal['A200']
 			},
-			type: prefersDarkMode
-		},
-		typography: {
-			fontFamily: "'Roboto', sans-serif",
-			textTransform: 'none',
-			useNextVariants: true
+			type: themeType
 		},
 		breakpoints: {
 			values: {
@@ -43,6 +39,23 @@ function App() {
 				md: 960,
 				lg: 1024,
 				xl: 1600
+			}
+		},
+		typography: {
+			fontFamily: "'Roboto', sans-serif",
+			textTransform: 'none',
+			useNextVariants: true,
+			h1: {},
+			h2: {},
+			h3: {
+				'@media (max-width:600px)': {
+					fontSize: '42px'
+				}
+			},
+			h4: {
+				'@media (max-width:600px)': {
+					fontSize: '24px'
+				}
 			}
 		}
 	})
@@ -54,8 +67,8 @@ function App() {
 
 	const themeToggle = () => {
 
-			prefersDarkMode === 'dark' ? setPrefersDarkMode('light') :
-			setPrefersDarkMode('dark')
+			themeType === 'dark' ? setthemeType('light') :
+			setthemeType('dark')
 	}
 
 	return (
@@ -65,6 +78,7 @@ function App() {
 					<CssBaseline />
 					<Navbar themeToggle={themeToggle} />
 					<Welcome />
+					<Projects />
 					<Resume />
 				</MuiThemeProvider>
 			</I18nextProvider>

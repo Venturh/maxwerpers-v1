@@ -3,9 +3,6 @@ import { Box, Button, IconButton, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
 import welcomeImage from '../assets/introCover.svg'
-import GitHubIcon from '@material-ui/icons/GitHub'
-import LinkedInIcon from '@material-ui/icons/LinkedIn'
-import Bounce from 'react-reveal/Bounce'
 import { HashLink } from 'react-router-hash-link'
 import SubAnimation from '../components/IntroSub'
 
@@ -17,50 +14,44 @@ const useStyles = makeStyles((theme) => ({
 		height: '100vh',
 		margin: 'auto',
 		[theme.breakpoints.down('xs')]: {
-			flexDirection: 'column'
+			flexDirection: 'column',
+			marginTop: '10%'
 		}
 	},
 	intro: {
 		flex: 1,
 		[theme.breakpoints.down('xs')]: {
-			marginTop: '10vh',
-			textAlign: 'center'
+			textAlign: 'center',
+			margin: theme.spacing(5)
 		}
 	},
 	introTextWrap: {},
-	introTextHeader: { margin: theme.spacing(1) },
+	introTextHeader: {},
+	introTextSub: { marginTop: theme.spacing(2), marginBottom: theme.spacing(2) },
 
 	infoBtnWrap: {
 		[theme.breakpoints.down('xs')]: {
 			display: 'flex',
 			flexDirection: 'column',
-			margin: theme.spacing(0.5),
-			marginTop: theme.spacing(8)
+			alignItems: 'center'
 		}
 	},
 	infoBtn: {
-		margin: theme.spacing(1.5),
-		marginTop: theme.spacing(3),
-		borderRadius: '5em',
-		[theme.breakpoints.down('md')]: {
-			margin: theme.spacing(1)
-		},
-		[theme.breakpoints.down('xs')]: {
-			margin: theme.spacing(8),
-			marginTop: theme.spacing(2),
-			marginBottom: theme.spacing(2)
-		}
+		margin: theme.spacing(2),
+		marginTop: theme.spacing(2),
+		[theme.breakpoints.down('xs')]: { marginTop: theme.spacing(2), margin: theme.spacing(0) }
 	},
 	coverImgWrap: {
 		flex: 1,
 		display: 'flex',
 		justifyContent: 'center',
-		height: '60vh'
+		height: '60vh',
+		[theme.breakpoints.down('xs')]: { marginBottom: '5%' }
 	},
 	coverImg: {
 		height: '100%',
 		[theme.breakpoints.down('xs')]: {
-			height: '80%'
+			height: '60%'
 		}
 	}
 }))
@@ -71,14 +62,16 @@ export default function WelcomePage(props) {
 	const ForwardNavLink = React.forwardRef((props, ref) => <HashLink {...props} innerRef={ref} />)
 	return (
 		<React.Fragment>
-			<Toolbar id='start' />
+			<Toolbar id='home' />
 			<Box className={classes.page}>
 				<Box id='intro' className={classes.intro}>
 					<Box textAlign='center' id='intro-text' className={classes.introTextWrap}>
 						<Typography id='start' variant='h3' color='primary' className={classes.introTextHeader}>
 							{t('welcomeMsg')}
 						</Typography>
-						<SubAnimation className={classes.introTextSub} />
+						<Box className={classes.introTextSub}>
+							<SubAnimation />
+						</Box>
 
 						<Box className={classes.infoBtnWrap}>
 							<Button
@@ -88,7 +81,7 @@ export default function WelcomePage(props) {
 								href='/#projects'
 								className={classes.infoBtn}
 							>
-								Projects
+								{t('projects')}
 							</Button>
 							<Button
 								size='large'
@@ -99,7 +92,7 @@ export default function WelcomePage(props) {
 								to='/#resume'
 								className={classes.infoBtn}
 							>
-								Resume
+								{t('Experience')}
 							</Button>
 						</Box>
 					</Box>

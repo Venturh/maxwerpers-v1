@@ -18,7 +18,7 @@ export default function ButtonAppBar({ themeToggle }) {
 							<NavigationFull themeToggle={themeToggle} />
 						</Hidden>
 						<Hidden smUp>
-							<NavigationMobile />
+							<NavigationMobile themeToggle={themeToggle} />
 						</Hidden>
 					</Box>
 				</Toolbar>

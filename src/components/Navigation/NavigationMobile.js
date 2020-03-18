@@ -1,55 +1,110 @@
 import React, { useState } from 'react'
-import { Button, Menu, Box, MenuItem, Typography } from '@material-ui/core'
+import {
+	Drawer,
+	Divider,
+	Box,
+	List,
+	ListItem,
+	ListItemIcon,
+	ListItemSecondaryAction,
+	ListItemText,
+	Switch
+} from '@material-ui/core'
+import LanguageSwitch from '../LanguageSwitch'
 import IconButton from '@material-ui/core/IconButton'
-import HomeIcon from '@material-ui/icons/Home'
+import MenuIcon from '@material-ui/icons/Menu'
 import { makeStyles } from '@material-ui/styles'
+import { useTranslation } from 'react-i18next'
+import InfoIcon from '@material-ui/icons/Info'
+import HomeIcon from '@material-ui/icons/Home'
+import BurstModeIcon from '@material-ui/icons/BurstMode'
+import SchoolIcon from '@material-ui/icons/School'
+import RecentActorsIcon from '@material-ui/icons/RecentActors'
+import Brightness4Icon from '@material-ui/icons/Brightness4'
+import { HashLink } from 'react-router-hash-link'
 
 const useStyles = makeStyles((theme) => ({
-	buttonCollapse: {
-		[theme.breakpoints.up('sm')]: {
-			display: 'none'
-		},
-		margin: '10px',
-		boxShadow: 'none'
-	}
+	divider: {
+		backgroundColor: theme.palette.primary.main
+	},
+	paper: { top: '5vh' }
 }))
 
-export default function NavigationMobile() {
-	const handleMenuOpen = (event) => {
-		setMenuOpen(true)
-		setAnchorEl(event.currentTarget)
-	}
-
-	const handleMenuClose = (language) => {
-		setAnchorEl(null)
-	}
-	const { classes } = useStyles()
+export default function NavigationMobile(props) {
+	const classes = useStyles()
+	const { t, i18n } = useTranslation()
 	const [
-		anchorEl,
-		setAnchorEl
-	] = useState(null)
-	const [
-		menuOpen,
-		setMenuOpen
+		right,
+		setRight
 	] = useState(false)
 
+	const toggleDrawer = (open) => (event) => {
+		if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+			return
+		}
+		setRight(open)
+	}
+	const ForwardNavLink = React.forwardRef((props, ref) => <HashLink {...props} innerRef={ref} />)
+
+	const [
+		checked,
+		setChecked
+	] = useState(true)
+
+	const handleToggleSwitch = (event) => {
+		setChecked(event.target.checked)
+		props.themeToggle()
+	}
+
 	return (
-		<div>
-			<IconButton label='Sprache' onClick={handleMenuOpen}>
-				<HomeIcon />
+		<Box display='flex' justifyContent='flex-end'>
+			<IconButton label='Sprache' onClick={toggleDrawer(true)}>
+				<MenuIcon />
 			</IconButton>
-			{
-				menuOpen ? <Box>
-					<Menu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={handleMenuClose}>
-						<MenuItem onClick={handleMenuClose}>
-							<Typography color='textSecondary'>Home</Typography>
-						</MenuItem>
-						<MenuItem onClick={handleMenuClose}>
-							<Typography color='textSecondary'>Resume</Typography>
-						</MenuItem>
-					</Menu>
-				</Box> :
-				null}
-		</div>
+			<Drawer
+				classes={{ paper: classes.paper }}
+				anchor='top'
+				open={right}
+				onClose={toggleDrawer(false)}
+			>
+				<List component='nav' aria-label='main mailbox folders' onClick={toggleDrawer(false)}>
+					{[
+						'home',
+						'projects',
+						'experience',
+						'about',
+						'contact'
+					].map((text, index) => (
+						<ListItem button key={text} component={ForwardNavLink} smooth to={'#' + text}>
+							<ListItemIcon>
+								{
+									index == 0 ? <HomeIcon /> :
+									index == 1 ? <BurstModeIcon /> :
+									index == 2 ? <SchoolIcon /> :
+									index == 3 ? <RecentActorsIcon /> :
+									<InfoIcon />}
+							</ListItemIcon>
+							<ListItemText primary={t(text)} />
+						</ListItem>
+					))}
+					<Divider className={classes.divider} />
+				</List>
+				<List>
+					<ListItem>
+						<ListItemIcon>
+							<Brightness4Icon />
+						</ListItemIcon>
+						<Switch
+							inputProps={{ 'aria-label': 'primary checkbox' }}
+							onChange={handleToggleSwitch}
+							checked={checked}
+						/>
+					</ListItem>
+					<ListItem>
+						<LanguageSwitch />
+					</ListItem>
+				</List>
+			</Drawer>
+		</Box>
 	)
 }

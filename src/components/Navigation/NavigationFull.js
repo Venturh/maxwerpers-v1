@@ -19,8 +19,7 @@ import Brightness4Icon from '@material-ui/icons/Brightness4'
 import { makeStyles } from '@material-ui/styles'
 import { HashLink } from 'react-router-hash-link'
 import { useTranslation } from 'react-i18next'
-import TranslateIcon from '@material-ui/icons/TranslateRounded'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMoreRounded'
+import LanguageSwitch from '../LanguageSwitch'
 
 const useStyles = makeStyles((theme) => ({
 	root: {},
@@ -76,82 +75,45 @@ function Navigation({ themeToggle }) {
 					<Tab
 						disableRipple
 						className={classes.tab}
-						label={t('Über')}
+						label={t('about')}
 						component={ForwardNavLink}
 						smooth
-						to='/#start'
+						to='/#home'
 					/>
 					<Tab
 						disableRipple
 						className={classes.tab}
-						label={t('Erfahrungen')}
+						label={t('projects')}
 						component={ForwardNavLink}
 						smooth
-						to='/#resume'
+						to='/#projects'
 					/>
 					<Tab
 						disableRipple
 						className={classes.tab}
-						label={t('Projekte')}
+						label={t('experience')}
 						component={ForwardNavLink}
 						smooth
-						to='/#lol'
+						to='/#experience'
 					/>
 					<Tab
 						disableRipple
 						className={classes.tab}
-						label={t('Kontakt')}
+						label={t('about')}
 						component={ForwardNavLink}
-						to='/#kontakt'
+						to='/#about'
+					/>
+					<Tab
+						disableRipple
+						className={classes.tab}
+						label={t('contact')}
+						component={ForwardNavLink}
+						to='/#contact'
 					/>
 				</Tabs>
-				<Language />
+				<LanguageSwitch />
 				<ToggleTheme themeToggle={themeToggle} />
 			</Box>
-		</Box>
-	)
-}
-
-function Language() {
-	const [
-		anchorEl,
-		setAnchorEl
-	] = React.useState(null)
-	const { t, i18n } = useTranslation()
-
-	const handleClick = (event) => {
-		setAnchorEl(event.currentTarget)
-	}
-
-	const handleClose = (language) => {
-		setAnchorEl(null)
-		console.log(i18n)
-		i18n.changeLanguage(language)
-	}
-
-	const handleUnClicked = () => {
-		setAnchorEl(null)
-	}
-
-	return (
-		<Box display='flex'>
-			<Button startIcon={<TranslateIcon />} endIcon={<ExpandMoreIcon />} onClick={handleClick}>
-				{i18n.language}
-			</Button>
-			<Menu
-				id='simple-menu'
-				anchorEl={anchorEl}
-				keepMounted
-				open={Boolean(anchorEl)}
-				onClose={handleUnClicked}
-			>
-				<MenuItem onClick={() => handleClose('de')}>
-					<Typography color='textSecondary'>Deutsch</Typography>
-				</MenuItem>
-				<MenuItem onClick={() => handleClose('en')}>
-					<Typography color='textSecondary'>English</Typography>
-				</MenuItem>
-			</Menu>
 		</Box>
 	)
 }

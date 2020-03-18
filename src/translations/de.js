@@ -3,13 +3,14 @@ let de = {
 		welcomeMsg: 'Hallo! Ich bin Maximilian',
 		wlecomeMsgSub: '',
 
-		student: 'Student der Medieninformatik',
+		student: 'Medieninformatiker',
 		frontdev: 'Front End Entwickler',
 		backdev: 'Back End Entwickler',
-		Über: 'Über',
-		Erfahrungen: 'Erfahrungen',
-		Projekte: 'Projekte',
-		Kontakt: 'Kontakt'
+		home: 'Start',
+		about: 'Über',
+		experience: 'Erfahrungen',
+		projects: 'Projekte',
+		contact: 'Kontakt'
 	}
 }
 

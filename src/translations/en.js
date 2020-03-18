@@ -8,10 +8,11 @@ let en = {
 			{ student: 'tom' },
 			{ frontdev: 'Front End Developer' }
 		],
-		Über: 'About',
-		Erfahrungen: 'Experience',
-		Projekte: 'Projects',
-		Kontakt: 'Contact'
+		home: 'Home',
+		about: 'About',
+		experience: 'Experience',
+		projects: 'Projects',
+		contakt: 'Contact'
 	}
 }
 
