@@ -4,15 +4,13 @@ let en = {
 		student: 'Media science student',
 		frontdev: 'Front End Developer',
 		backdev: 'Back End Developer',
-		welcomeSub: [
-			{ student: 'tom' },
-			{ frontdev: 'Front End Developer' }
-		],
 		home: 'Home',
 		about: 'About',
 		experience: 'Experience',
 		projects: 'Projects',
-		contakt: 'Contact'
+		contakt: 'Contact',
+
+		miner: 'Pokemon Coin Miner'
 	}
 }
 

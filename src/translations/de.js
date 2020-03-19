@@ -1,8 +1,6 @@
 let de = {
 	translations: {
 		welcomeMsg: 'Hallo! Ich bin Maximilian',
-		wlecomeMsgSub: '',
-
 		student: 'Medieninformatiker',
 		frontdev: 'Front End Entwickler',
 		backdev: 'Back End Entwickler',
@@ -10,7 +8,9 @@ let de = {
 		about: 'Über',
 		experience: 'Erfahrungen',
 		projects: 'Projekte',
-		contact: 'Kontakt'
+		contact: 'Kontakt',
+
+		miner: 'Pokemon Münzen Farmer'
 	}
 }
 
