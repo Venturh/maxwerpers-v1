@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import './style.css'
 
 export default function Project(props) {
-	/**toDo css Style jss dings  udn url für demo von github*/
 	const { i18m, t } = useTranslation()
 
 	function openLink(url) {}
