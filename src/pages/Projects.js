@@ -27,7 +27,8 @@ const useStyles = makeStyles((theme) => ({
 		display: 'grid',
 		gridTemplateColumns: ' repeat(auto-fit, minmax(300px, 0.5fr))',
 		gap: '1rem 1rem',
-		margin: theme.spacing(4)
+		margin: theme.spacing(4),
+		justifyContent: 'center'
 	}
 }))
 
@@ -63,35 +64,32 @@ export default function Projects() {
 		client
 			.query({
 				query: gql`
-          {
-            repositoryOwner(login: "${token.githubUserName}") {
-              ... on User {
-                pinnedRepositories(first: 6) {
-                  edges {
-                    node {
-                      nameWithOwner
-                      description
-                      forkCount
-                      stargazers {
-                        totalCount
-                      }
-                      url
-                      id
-                      primaryLanguage {
-                        name
-                        color
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        `
+					{
+						user(login: "Venturh") {
+							pinnedItems(first: 5, types: [REPOSITORY]) {
+								edges {
+									node {
+										... on Repository {
+											url
+											id
+											nameWithOwner
+											homepageUrl
+											description
+											primaryLanguage {
+												color
+												name
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				`
 			})
 			.then((result) => {
-				setProjectData(result.data.repositoryOwner.pinnedRepositories.edges)
-				console.log(result)
+				setProjectData(result.data.user.pinnedItems.edges)
+				console.log(result.data.user.pinnedItems.edges)
 			})
 	}
 

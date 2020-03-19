@@ -18,6 +18,7 @@ export default function Project(props) {
 			marginTop: 5
 		}
 	}
+
 	return (
 		<Card style={{ width: '100%' }}>
 			<CardContent>
@@ -42,7 +43,7 @@ export default function Project(props) {
 						style={{ marginLeft: '10px' }}
 						variant='contained'
 						color='secondary'
-						onClick={() => window.open(props.url, '_blank').focus()}
+						onClick={() => window.open(props.homepageUrl, '_blank').focus()}
 					>
 						Live-Demo
 					</Button>
