@@ -18,7 +18,6 @@ export default function Project(props) {
 			marginTop: 5
 		}
 	}
-
 	return (
 		<Card style={{ width: '100%' }}>
 			<CardContent>
