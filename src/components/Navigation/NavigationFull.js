@@ -51,10 +51,13 @@ const useStyles = makeStyles((theme) => ({
 		'& .flexContainer': {
 			flexDirection: 'row-reverse'
 		}
+	},
+	themeToggle: {
+		borderRadius: 99
 	}
 }))
 
-function Navigation({ themeToggle }) {
+function Navigation(props) {
 	const classes = useStyles()
 	const [
 		tabposition,
@@ -112,20 +115,13 @@ function Navigation({ themeToggle }) {
 					/>
 				</Tabs>
 				<LanguageSwitch />
-				<ToggleTheme themeToggle={themeToggle} />
+				<IconButton className={classes.themeToggle} onClick={props.themeToggle}>
+					{
+						props.themeType === 'dark' ? <BrightnessHighIcon /> :
+						<Brightness4Icon />}
+				</IconButton>
 			</Box>
 		</Box>
-	)
-}
-
-const ToggleTheme = ({ themeToggle }) => {
-	const classes = useStyles()
-	return (
-		<Button
-			startIcon={<BrightnessHighIcon />}
-			className={classes.nightmodetoggle}
-			onClick={themeToggle}
-		/>
 	)
 }
 

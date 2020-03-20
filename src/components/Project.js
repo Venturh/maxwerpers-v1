@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Box, Card, CardContent, CardMedia, Typography, Button } from '@material-ui/core'
+import FolderIcon from '@material-ui/icons/Folder'
 import { useTranslation } from 'react-i18next'
 import './style.css'
 
@@ -24,11 +25,15 @@ export default function Project(props) {
 					<Box {...circle} />
 					<Typography variant='subtitle2'>{props.primaryLanguage.name}</Typography>
 				</Box>
-
-				<Typography noWrap variant='h6'>
-					{props.nameWithOwner}
+				<Box display='flex'>
+					<FolderIcon fontSize='small' style={{ margin: 6 }} />
+					<Typography noWrap variant='h5'>
+						{props.nameWithOwner}
+					</Typography>
+				</Box>
+				<Typography variant='h6' className='repo-description'>
+					{props.description}
 				</Typography>
-				<Typography className='repo-description'>{props.description}</Typography>
 				<Box mt={2}>
 					<Button
 						variant='contained'
@@ -37,14 +42,16 @@ export default function Project(props) {
 					>
 						Link
 					</Button>
-					<Button
-						style={{ marginLeft: '10px' }}
-						variant='contained'
-						color='secondary'
-						onClick={() => window.open(props.homepageUrl, '_blank').focus()}
-					>
-						Live-Demo
-					</Button>
+					{
+						props.homepageUrl ? <Button
+							style={{ marginLeft: '10px' }}
+							variant='contained'
+							color='secondary'
+							onClick={() => window.open(props.homepageUrl, '_blank').focus()}
+						>
+							Live-Demo
+						</Button> :
+						null}
 				</Box>
 			</CardContent>
 		</Card>

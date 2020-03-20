@@ -76,7 +76,7 @@ function App() {
 			<I18nextProvider i18n={i18n}>
 				<MuiThemeProvider theme={dark}>
 					<CssBaseline />
-					<Navbar themeToggle={themeToggle} />
+					<Navbar themeToggle={themeToggle} themeType={themeType} />
 					<Welcome />
 					<Projects />
 					<Resume />

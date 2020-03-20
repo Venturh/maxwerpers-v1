@@ -6,7 +6,8 @@ import NavigationFull from '../components/Navigation/NavigationFull'
 import { makeStyles } from '@material-ui/styles'
 const useStyles = makeStyles((theme) => ({}))
 
-export default function ButtonAppBar({ themeToggle }) {
+export default function ButtonAppBar(props) {
+	console.log('props', props.themeType)
 	const trigger = useScrollTrigger()
 	const classes = useStyles()
 	return (
@@ -15,10 +16,10 @@ export default function ButtonAppBar({ themeToggle }) {
 				<Toolbar>
 					<Box width='100%' height='100%' className={classes.root}>
 						<Hidden xsDown>
-							<NavigationFull themeToggle={themeToggle} />
+							<NavigationFull themeToggle={props.themeToggle} themeType={props.themeType} />
 						</Hidden>
 						<Hidden smUp>
-							<NavigationMobile themeToggle={themeToggle} />
+							<NavigationMobile themeToggle={props.themeToggle} themeType={props.themeType} />
 						</Hidden>
 					</Box>
 				</Toolbar>
