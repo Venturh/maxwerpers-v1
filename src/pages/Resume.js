@@ -17,8 +17,9 @@ import { useTranslation } from 'react-i18next'
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
-		minHeight: '100vh',
+		height: '100vh',
 		Width: '100vw',
+		marginTop: 'auto',
 		background: theme.gradient.start
 	}
 }))

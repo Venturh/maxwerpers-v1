@@ -19,7 +19,7 @@ export default function Project(props) {
 		}
 	}
 	return (
-		<Card style={{ width: '100%' }}>
+		<Card>
 			<CardContent>
 				<Box display='flex'>
 					<Box {...circle} />

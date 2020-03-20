@@ -20,15 +20,30 @@ import Project from '../components/Project'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
-		height: '100vh'
+		height: '100vh',
+		[theme.breakpoints.down('sm')]: {
+			height: '100%'
+		}
 	},
 	projects: { display: 'flex', justifyContent: 'space-evenly' },
 	projectList: {
 		display: 'grid',
-		gridTemplateColumns: ' repeat(auto-fit, minmax(300px, 0.5fr))',
+		justifyContent: 'center',
 		gap: '1rem 1rem',
-		margin: theme.spacing(4),
-		justifyContent: 'center'
+
+		margin: theme.spacing(2),
+		[theme.breakpoints.up('sm')]: {
+			gridTemplateColumns: ' auto auto auto',
+			margin: theme.spacing(10),
+			marginTop: theme.spacing(20)
+		},
+
+		[theme.breakpoints.down('sm')]: {
+			gridTemplateColumns: ' auto auto',
+			[theme.breakpoints.down('xs')]: {
+				gridTemplateColumns: ' auto'
+			}
+		}
 	}
 }))
 
@@ -89,7 +104,6 @@ export default function Projects() {
 			})
 			.then((result) => {
 				setProjectData(result.data.user.pinnedItems.edges)
-				console.log(result.data.user.pinnedItems.edges)
 			})
 	}
 
@@ -99,6 +113,7 @@ export default function Projects() {
 				{t('projects')}
 			</Typography>
 			<Box className={classes.projectList}>
+				{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
 				{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
 			</Box>
 		</Box>

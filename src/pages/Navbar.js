@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/styles'
 const useStyles = makeStyles((theme) => ({}))
 
 export default function ButtonAppBar(props) {
-	console.log('props', props.themeType)
 	const trigger = useScrollTrigger()
 	const classes = useStyles()
 	return (

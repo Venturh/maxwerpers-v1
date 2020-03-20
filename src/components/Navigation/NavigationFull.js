@@ -78,7 +78,7 @@ function Navigation(props) {
 					<Tab
 						disableRipple
 						className={classes.tab}
-						label={t('about')}
+						label={t('home')}
 						component={ForwardNavLink}
 						smooth
 						to='/#home'
