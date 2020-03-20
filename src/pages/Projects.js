@@ -17,31 +17,40 @@ import ApolloClient from 'apollo-boost'
 import { gql } from 'apollo-boost'
 import ProjectData from '../constant/ProjectData'
 import Project from '../components/Project'
+import Fade from 'react-reveal/Fade'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
 		height: '100vh',
+		display: 'flex',
+		flexDirection: 'column',
 		[theme.breakpoints.down('sm')]: {
 			height: '100%'
 		}
 	},
-	projects: { display: 'flex', justifyContent: 'space-evenly' },
+	projects: {
+		[theme.breakpoints.up('sm')]: {
+			marginTop: theme.spacing(10)
+		},
+		[theme.breakpoints.down('sm')]: {
+			marginTop: theme.spacing(5)
+		}
+	},
 	projectList: {
 		display: 'grid',
 		justifyContent: 'center',
 		gap: '1rem 1rem',
-
 		margin: theme.spacing(2),
 		[theme.breakpoints.up('sm')]: {
 			gridTemplateColumns: ' auto auto auto',
-			margin: theme.spacing(10),
-			marginTop: theme.spacing(20)
+			margin: theme.spacing(10)
 		},
 
 		[theme.breakpoints.down('sm')]: {
 			gridTemplateColumns: ' auto auto',
 			[theme.breakpoints.down('xs')]: {
-				gridTemplateColumns: ' auto'
+				gridTemplateColumns: ' auto',
+				margin: theme.spacing(5)
 			}
 		}
 	}
@@ -109,13 +118,17 @@ export default function Projects() {
 
 	return (
 		<Box id='projects' className={classes.page}>
-			<Typography align='center' variant='h3'>
-				{t('projects')}
-			</Typography>
-			<Box className={classes.projectList}>
-				{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
-				{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
+			<Box className={classes.projects}>
+				<Typography align='center' variant='h3'>
+					{t('projects')}
+				</Typography>
 			</Box>
+			<Fade left cascade>
+				<Box className={classes.projectList}>
+					{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
+					{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
+				</Box>
+			</Fade>
 		</Box>
 	)
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Box, Card, CardContent, CardMedia, Typography, Button } from '@material-ui/core'
 import FolderIcon from '@material-ui/icons/Folder'
 import { useTranslation } from 'react-i18next'
+import Fade from 'react-reveal/Fade'
 import './style.css'
 
 export default function Project(props) {
@@ -14,24 +15,23 @@ export default function Project(props) {
 			borderRadius: '100%',
 			width: '8px',
 			height: '8px',
-			marginRight: '0.5rem',
-			marginTop: 5
+			marginRight: '0.25rem',
+			marginTop: 6
 		}
 	}
 	return (
 		<Card>
 			<CardContent>
 				<Box display='flex'>
-					<Box {...circle} />
+					<Box {...circle} boxShadow={3} />
 					<Typography variant='subtitle2'>{props.primaryLanguage.name}</Typography>
 				</Box>
 				<Box display='flex'>
-					<FolderIcon fontSize='small' style={{ margin: 6 }} />
-					<Typography noWrap variant='h5'>
+					<Typography noWrap variant='h5' style={{ fontWeight: 600 }}>
 						{props.nameWithOwner}
 					</Typography>
 				</Box>
-				<Typography variant='h6' className='repo-description'>
+				<Typography variant='body1' className='repo-description'>
 					{props.description}
 				</Typography>
 				<Box mt={2}>

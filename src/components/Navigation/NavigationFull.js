@@ -72,7 +72,9 @@ function Navigation(props) {
 
 	return (
 		<Box className={classes.nav}>
-			<Button>_maxwerpers</Button>
+			<Button component={ForwardNavLink} smooth to='#home'>
+				_maxwerpers
+			</Button>
 			<Box className={classes.tabItems}>
 				<Tabs value={tabposition} onChange={handleTabChange}>
 					<Tab

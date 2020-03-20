@@ -19,7 +19,7 @@ function App() {
 		setthemeType
 	] = useState('dark')
 
-	const dark = createMuiTheme({
+	let theme = createMuiTheme({
 		gradient: {
 			start: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
 		},
@@ -44,37 +44,20 @@ function App() {
 		typography: {
 			fontFamily: "'Roboto', sans-serif",
 			textTransform: 'none',
-			useNextVariants: true,
-			h1: {},
-			h2: {},
-			h3: {
-				'@media (max-width:600px)': {
-					fontSize: '42px'
-				}
-			},
-			h4: {
-				'@media (max-width:600px)': {
-					fontSize: '24px'
-				}
-			}
+			useNextVariants: true
 		}
 	})
-
-	const [
-		theme,
-		setTheme
-	] = useState(themeConstants.THEME_DARK)
 
 	const themeToggle = () => {
 
 			themeType === 'dark' ? setthemeType('light') :
 			setthemeType('dark')
 	}
-
+	theme = responsiveFontSizes(theme)
 	return (
 		<div style={{ margin: 0 }}>
 			<I18nextProvider i18n={i18n}>
-				<MuiThemeProvider theme={dark}>
+				<MuiThemeProvider theme={theme}>
 					<CssBaseline />
 					<Navbar themeToggle={themeToggle} themeType={themeType} />
 					<Welcome />
