@@ -17,7 +17,7 @@ function App() {
 	const [
 		themeType,
 		setthemeType
-	] = useState('dark')
+	] = useState('light')
 
 	let theme = createMuiTheme({
 		gradient: {
@@ -29,6 +29,16 @@ function App() {
 			},
 			secondary: {
 				main: teal['A200']
+			},
+			background: {
+				default:
+
+						themeType == 'light' ? '#efefef' :
+						'#303030',
+				paper:
+
+						themeType == 'light' ? '#ffffff' :
+						'#3c3c3c'
 			},
 			type: themeType
 		},

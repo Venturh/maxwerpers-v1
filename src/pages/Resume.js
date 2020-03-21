@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import {
 	Button,
 	Box,
@@ -13,28 +13,32 @@ import {
 import { makeStyles } from '@material-ui/core/styles'
 import Zoom from 'react-reveal/Zoom'
 import { useTranslation } from 'react-i18next'
+import Timeline from '../components/Timeline'
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		display: 'flex',
+	page: {
 		height: '100vh',
-		Width: '100vw',
-		marginTop: 'auto',
-		background: theme.gradient.start
+		display: 'flex',
+		flexDirection: 'column',
+		[theme.breakpoints.down('sm')]: {
+			height: '100%'
+		}
 	}
 }))
 
 function Resume() {
 	const classes = useStyles()
 	const { i18n, t } = useTranslation()
+	const [
+		activeStep,
+		setActiveStep
+	] = useState(0)
 	return (
-		<Paper id='experience' className={classes.root}>
-			<Zoom>
-				<Typography variant='h3' color='secondary'>
-					Lebenslauf
-				</Typography>
-			</Zoom>
-		</Paper>
+		<Box id='experience' className={classes.page}>
+			<Box m={10} className={classes.timeline}>
+				<Timeline />
+			</Box>
+		</Box>
 	)
 }
 
