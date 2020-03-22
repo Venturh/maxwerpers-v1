@@ -10,7 +10,20 @@ let de = {
 		projects: 'Projekte',
 		contact: 'Kontakt',
 
-		miner: 'Pokemon Münzen Farmer'
+		/* Timeline */
+		timeline01title: 'Bachelor of Science Medieninformatik',
+		timeline01text: '',
+		timeline02title: 'Student der Angewandte Informatik',
+		timeline02text: 'Hochschule Rhein Main',
+
+		timeline03title: 'Freiwilliges Soziales Jahr',
+		timeline03text: 'gGis Hannover',
+
+		timeline04title: 'Abitur',
+		timeline04text: ' Wilhelm Busch Gymnasium Stadthagen',
+
+		timeline05title: 'Ein Jahr an einer französischen Schule',
+		timeline05text: 'College Saint Joseph'
 	}
 }
 

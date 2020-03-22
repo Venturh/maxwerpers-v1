@@ -24,12 +24,14 @@ const useStyles = makeStyles((theme) => ({
 		height: '100vh',
 		display: 'flex',
 		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
 			height: '100%'
 		}
 	},
 	projects: {
-		[theme.breakpoints.up('sm')]: {
+		[theme.breakpoints.up('md')]: {
 			marginTop: theme.spacing(10)
 		},
 		[theme.breakpoints.down('sm')]: {
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	projectList: {
 		display: 'grid',
-		justifyContent: 'center',
+
 		gap: '1rem 1rem',
 		margin: theme.spacing(2),
 		[theme.breakpoints.up('sm')]: {

@@ -106,6 +106,7 @@ function Navigation(props) {
 						className={classes.tab}
 						label={t('about')}
 						component={ForwardNavLink}
+						smooth
 						to='/#about'
 					/>
 					<Tab
@@ -113,6 +114,7 @@ function Navigation(props) {
 						className={classes.tab}
 						label={t('contact')}
 						component={ForwardNavLink}
+						smooth
 						to='/#contact'
 					/>
 				</Tabs>

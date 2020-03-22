@@ -11,35 +11,30 @@ import {
 	Card
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import Zoom from 'react-reveal/Zoom'
 import { useTranslation } from 'react-i18next'
-import Timeline from '../components/Timeline'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
 		height: '100vh',
 		display: 'flex',
 		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
-			height: '100%'
+			height: '100vh'
 		}
 	}
 }))
 
-function Resume() {
+export default function About() {
 	const classes = useStyles()
 	const { i18n, t } = useTranslation()
-	const [
-		activeStep,
-		setActiveStep
-	] = useState(0)
+
 	return (
-		<Box id='experience' className={classes.page}>
-			<Box m={10} className={classes.timeline}>
-				<Timeline />
-			</Box>
+		<Box id='about' className={classes.page}>
+			<Typography variant='h3' className={classes.title}>
+				{t('about')}
+			</Typography>
 		</Box>
 	)
 }
-
-export default Resume

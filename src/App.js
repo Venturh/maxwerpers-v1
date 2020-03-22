@@ -7,7 +7,8 @@ import { MuiThemeProvider } from '@material-ui/core/styles'
 import Navbar from './pages/Navbar'
 import Welcome from './pages/Welcome'
 import Projects from './pages/Projects'
-import Resume from './pages/Resume'
+import Experience from './pages/Experience'
+import About from './pages/About'
 import { themeConstants } from './constant/ThemeConstants'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import deepPurple from '@material-ui/core/colors/deepPurple'
@@ -17,7 +18,7 @@ function App() {
 	const [
 		themeType,
 		setthemeType
-	] = useState('light')
+	] = useState('dark')
 
 	let theme = createMuiTheme({
 		gradient: {
@@ -72,7 +73,8 @@ function App() {
 					<Navbar themeToggle={themeToggle} themeType={themeType} />
 					<Welcome />
 					<Projects />
-					<Resume />
+					<Experience />
+					<About />
 				</MuiThemeProvider>
 			</I18nextProvider>
 		</div>
