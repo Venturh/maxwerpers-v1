@@ -23,7 +23,11 @@ let de = {
 		timeline04text: ' Wilhelm Busch Gymnasium Stadthagen',
 
 		timeline05title: 'Ein Jahr an einer französischen Schule',
-		timeline05text: 'College Saint Joseph'
+		timeline05text: 'College Saint Joseph',
+
+		/* Form */
+		message: 'Nachricht',
+		submit: 'Senden'
 	}
 }
 
