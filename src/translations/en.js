@@ -8,7 +8,7 @@ let en = {
 		about: 'About',
 		experience: 'Experience',
 		projects: 'Projects',
-		contakt: 'Contact',
+		contact: 'Contact',
 
 		/* Timeline */
 		timeline01title: 'Bachelor of Science Media Computer Science',

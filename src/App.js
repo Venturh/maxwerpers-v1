@@ -9,7 +9,7 @@ import Welcome from './pages/Welcome'
 import Projects from './pages/Projects'
 import Experience from './pages/Experience'
 import About from './pages/About'
-import { themeConstants } from './constant/ThemeConstants'
+import Contact from './pages/Contact'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import deepPurple from '@material-ui/core/colors/deepPurple'
 import teal from '@material-ui/core/colors/teal'
@@ -75,6 +75,7 @@ function App() {
 					<Projects />
 					<Experience />
 					<About />
+					<Contact />
 				</MuiThemeProvider>
 			</I18nextProvider>
 		</div>

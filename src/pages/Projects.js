@@ -42,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
 		display: 'grid',
 
 		gap: '1rem 1rem',
-		margin: theme.spacing(2),
 		[theme.breakpoints.up('sm')]: {
 			gridTemplateColumns: ' auto auto auto',
 			margin: theme.spacing(10)
@@ -52,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 			gridTemplateColumns: ' auto auto',
 			[theme.breakpoints.down('xs')]: {
 				gridTemplateColumns: ' auto',
-				margin: theme.spacing(5)
+				margin: theme.spacing(3)
 			}
 		}
 	}

@@ -118,7 +118,7 @@ const useStyles = makeStyles((theme) => ({
 			display: 'flex',
 			flexDirection: 'column',
 			alignItems: 'center',
-			margin: theme.spacing(5),
+			margin: theme.spacing(3),
 			'&::after': {
 				backgroundColor: theme.palette.primary.main,
 				content: '""',
