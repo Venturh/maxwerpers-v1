@@ -20,7 +20,6 @@ const useStyles = makeStyles((theme) => ({
 		height: '100vh',
 		display: 'flex',
 		flexDirection: 'column',
-		justifyContent: 'center',
 		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
 			height: '100%'
@@ -29,9 +28,7 @@ const useStyles = makeStyles((theme) => ({
 	title: {
 		justifyContent: 'center',
 		alignItems: 'center',
-		[theme.breakpoints.up('md')]: {
-			marginBottom: theme.spacing(5)
-		},
+		[theme.breakpoints.up('md')]: { margin: theme.spacing(10) },
 		[theme.breakpoints.down('sm')]: {
 			marginTop: theme.spacing(5)
 		}

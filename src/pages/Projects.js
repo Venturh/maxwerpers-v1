@@ -24,15 +24,14 @@ const useStyles = makeStyles((theme) => ({
 		height: '100vh',
 		display: 'flex',
 		flexDirection: 'column',
-		justifyContent: 'center',
 		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
 			height: '100%'
 		}
 	},
-	projects: {
+	title: {
 		[theme.breakpoints.up('md')]: {
-			marginTop: theme.spacing(10)
+			margin: theme.spacing(10)
 		},
 		[theme.breakpoints.down('sm')]: {
 			marginTop: theme.spacing(5)
@@ -44,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
 		gap: '1rem 1rem',
 		[theme.breakpoints.up('sm')]: {
 			gridTemplateColumns: ' auto auto auto',
-			margin: theme.spacing(10)
+			marginBotom: theme.spacing(10),
+			marginLeft: theme.spacing(10),
+			marginRight: theme.spacing(10)
 		},
 
 		[theme.breakpoints.down('sm')]: {
@@ -60,10 +61,6 @@ const useStyles = makeStyles((theme) => ({
 export default function Projects() {
 	const classes = useStyles()
 	const { i18n, t } = useTranslation()
-	const token = {
-		githubConvertedToken: 'MmI3ZTVjNmYzNTkxOTI2NjhlZThjMjYwODI5NTc4YzMxMjI0YTk3Yg==',
-		githubUserName: 'Venturh'
-	}
 
 	const [
 		projectData,
@@ -80,7 +77,9 @@ export default function Projects() {
 			request: (operation) => {
 				operation.setContext({
 					headers: {
-						authorization: `Bearer ${atob(token.githubConvertedToken)}`
+						authorization: `Bearer ${atob(
+							'MmI3ZTVjNmYzNTkxOTI2NjhlZThjMjYwODI5NTc4YzMxMjI0YTk3Yg=='
+						)}`
 					}
 				})
 			}
@@ -119,7 +118,7 @@ export default function Projects() {
 
 	return (
 		<Box id='projects' className={classes.page}>
-			<Box className={classes.projects}>
+			<Box className={classes.title}>
 				<Typography align='center' variant='h3'>
 					{t('projects')}
 				</Typography>

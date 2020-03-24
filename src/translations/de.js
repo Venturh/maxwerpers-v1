@@ -26,8 +26,15 @@ let de = {
 		timeline05text: 'College Saint Joseph',
 
 		/* Form */
+		contactme: 'Schreib mir etwas',
 		message: 'Nachricht',
-		submit: 'Senden'
+		submit: 'Senden',
+
+		cardTitle: 'Besuche mich auf ...',
+		githubDesc: 'Schau dir meine "Open Source" Projekte auf Github an',
+		playstoreDesc:
+			'Auf meinem Google Play Store Profil findest du einige Apps die ich veröffentlicht habe',
+		linkedinDesc: 'Hier gehts zu meinem Linkedin Profil'
 	}
 }
 
