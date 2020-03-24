@@ -38,13 +38,11 @@ const useStyles = makeStyles((theme) => ({
 		width: '100%',
 		[theme.breakpoints.down('sm')]: {
 			flexDirection: 'column',
-			alignItems: 'center'
+			width: '80%'
 		}
 	},
 	form: {
 		width: '50%',
-		alignItems: 'center',
-		justifyContent: 'center',
 		[theme.breakpoints.down('sm')]: {
 			width: '100%'
 		}
