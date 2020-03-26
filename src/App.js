@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { I18nextProvider } from 'react-i18next'
 import i18n from './translations/i18n'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -15,10 +15,14 @@ import deepPurple from '@material-ui/core/colors/deepPurple'
 import teal from '@material-ui/core/colors/teal'
 
 function App() {
+	const initialTheme = () => String(localStorage.getItem('theme') || 'dark')
+
 	const [
 		themeType,
 		setthemeType
-	] = useState('dark')
+	] = useState(initialTheme)
+
+	useEffect(() => localStorage.setItem('theme', themeType), [])
 
 	let theme = createMuiTheme({
 		gradient: {
@@ -60,9 +64,13 @@ function App() {
 	})
 
 	const themeToggle = () => {
-
-			themeType === 'dark' ? setthemeType('light') :
+		if (themeType === 'dark') {
+			setthemeType('light')
+			localStorage.setItem('theme', 'light')
+		} else {
 			setthemeType('dark')
+			localStorage.setItem('theme', 'dark')
+		}
 	}
 	theme = responsiveFontSizes(theme)
 	return (

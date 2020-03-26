@@ -15,11 +15,14 @@ import { makeStyles } from '@material-ui/core/styles'
 import { useTranslation } from 'react-i18next'
 import ContactForm from '../components/ContactForm'
 import { ContactCard } from '../components/ContactForm'
+import welcomeImage from '../assets/introCover.svg'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
 		height: '100vh',
 		display: 'flex',
+		marginLeft: theme.spacing(10),
+		marginRight: theme.spacing(10),
 		flexDirection: 'column',
 		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
@@ -37,13 +40,15 @@ const useStyles = makeStyles((theme) => ({
 	},
 	contactItems: {
 		display: 'flex',
-		justifyContent: 'center',
+		alignSelf: 'flex-end',
+		flex: 3,
 		[theme.breakpoints.down('sm')]: {
 			flexDirection: 'column'
 		}
 	},
 	form: {
 		width: '50%',
+
 		[theme.breakpoints.down('sm')]: {
 			width: '100%'
 		}
@@ -61,6 +66,22 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down('sm')]: {
 			display: 'none'
 		}
+	},
+	items: {
+		display: 'flex'
+	},
+	imageWrap: {
+		flex: 2,
+		display: 'flex',
+		justifyContent: 'center',
+		height: '60vh',
+		[theme.breakpoints.down('md')]: { display: 'none' }
+	},
+	projectImg: {
+		height: '100%',
+		[theme.breakpoints.down('lg')]: {
+			height: '80%'
+		}
 	}
 }))
 
@@ -75,19 +96,24 @@ export default function Contact() {
 					{t('contact')}
 				</Typography>
 			</Box>
-			<Box className={classes.contactItems}>
-				<Box className={classes.form}>
-					<Typography variant='h6' className={classes.formtitles}>
-						{t('contactme')}
-					</Typography>
-					<ContactForm />
-				</Box>
-				<Divider orientation='vertical' flexItem className={classes.divider} />
-				<Box className={classes.contactCards}>
-					<Typography variant='h6' className={classes.formtitles}>
-						{t('cardTitle')}
-					</Typography>
-					<ContactCard />
+			<Box className={classes.items}>
+				<Box className={classes.contactItems}>
+					<Box className={classes.form}>
+						<Typography variant='h6' className={classes.formtitles}>
+							{t('contactme')}
+						</Typography>
+						<ContactForm />
+					</Box>
+					<Divider orientation='vertical' flexItem className={classes.divider} />
+					<Box className={classes.contactCards}>
+						<Typography variant='h6' className={classes.formtitles}>
+							{t('cardTitle')}
+						</Typography>
+						<ContactCard />
+					</Box>
+					<Box className={classes.imageWrap}>
+						<img className={classes.projectImg} src={welcomeImage} />
+					</Box>
 				</Box>
 			</Box>
 		</Box>

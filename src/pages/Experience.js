@@ -48,7 +48,9 @@ function Experience() {
 			<Typography variant='h3' className={classes.title}>
 				{t('experience')}
 			</Typography>
-			<Timeline />
+			<Box alignItems='flex-start'>
+				<Timeline />
+			</Box>
 		</Box>
 	)
 }

@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 			flexDirection: 'column'
 		},
 		timelineContainer: {
+			backgroundColor: theme.palette.primary.secondary,
 			display: 'flex',
 			flexDirection: 'column',
 			position: 'relative',

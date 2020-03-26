@@ -18,13 +18,20 @@ import { gql } from 'apollo-boost'
 import ProjectData from '../constant/ProjectData'
 import Project from '../components/Project'
 import Fade from 'react-reveal/Fade'
+import projectImage from '../assets/project.svg'
+import rocket from '../assets/rocket.svg'
+import rocket2 from '../assets/rocket2.svg'
+import testbg from '../assets/testbg.svg'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
+		// backgroundImage: `url(${testbg})`,
+		// backgroundRepeat: 'none',
+		// backgroundSize: 'cover',
 		height: '100vh',
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center',
+
 		[theme.breakpoints.down('sm')]: {
 			marginLeft: theme.spacing(3),
 			marginRight: theme.spacing(3),
@@ -33,8 +40,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	title: {
 		[theme.breakpoints.up('md')]: {
-			marginTop: theme.spacing(10),
-			marginBottom: theme.spacing(10)
+			marginTop: theme.spacing(10)
 		},
 		[theme.breakpoints.down('sm')]: {
 			marginTop: theme.spacing(5),
@@ -42,21 +48,31 @@ const useStyles = makeStyles((theme) => ({
 		}
 	},
 	projectList: {
+		marginLeft: theme.spacing(10),
+		marginRight: theme.spacing(10),
 		display: 'grid',
-
 		gap: '1rem 1rem',
-		[theme.breakpoints.up('sm')]: {
-			gridTemplateColumns: ' auto auto auto',
-			marginBotom: theme.spacing(10),
-			marginLeft: theme.spacing(10),
-			marginRight: theme.spacing(10)
+		[theme.breakpoints.up('lg')]: {
+			gridTemplateColumns: ' auto auto auto'
 		},
-
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('lg')]: {
 			gridTemplateColumns: ' auto auto',
-			[theme.breakpoints.down('xs')]: {
+			[theme.breakpoints.down('sm')]: {
 				gridTemplateColumns: ' auto'
 			}
+		}
+	},
+	imageWrap: {
+		flex: 1,
+		display: 'flex',
+		justifyContent: 'center',
+		height: '80vh',
+		[theme.breakpoints.down('md')]: { display: 'none' }
+	},
+	projectImg: {
+		height: '100%',
+		[theme.breakpoints.down('lg')]: {
+			height: '80%'
 		}
 	}
 }))
@@ -126,12 +142,22 @@ export default function Projects() {
 					{t('projects')}
 				</Typography>
 			</Box>
-			<Fade left cascade>
-				<Box className={classes.projectList}>
-					{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
-					{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
+			<Box display='flex'>
+				<Box className={classes.imageWrap}>
+					<Fade up cascade>
+						<img className={classes.projectImg} src={rocket} />
+					</Fade>
 				</Box>
-			</Fade>
+
+				<Box flex={2} alignSelf='center'>
+					<Fade right>
+						<Box className={classes.projectList}>
+							{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
+							{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
+						</Box>
+					</Fade>
+				</Box>
+			</Box>
 		</Box>
 	)
 }
