@@ -66,7 +66,6 @@ export default function ContactForm() {
 
 	return (
 		<Box>
-			<Typography variant='h5'>{t('contactme')}</Typography>
 			<form className={classes.form} onSubmit={handleSubmit} noValidate autoComplete='off'>
 				<Typography style={{ marginLeft: 2 }}>Email</Typography>
 				<TextField
@@ -112,49 +111,75 @@ export default function ContactForm() {
 
 export function ContactCard() {
 	const useStyles = makeStyles((theme) => ({
-		card: { marginTop: theme.spacing(2) },
-		icons: { fontSize: 100, color: theme.palette.primary.main }
+		card: {
+			display: 'flex',
+			marginTop: theme.spacing(2),
+			[theme.breakpoints.down('sm')]: {
+				minHeight: 150,
+				justifyContent: 'flex-start'
+			}
+		},
+		icons: {
+			fontSize: 80,
+			color: theme.palette.primary.main,
+			[theme.breakpoints.down('sm')]: {
+				fontSize: 45
+			}
+		},
+		cardText: {
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+			marginRight: theme.spacing(2),
+			[theme.breakpoints.down('sm')]: {
+				justifyContent: 'center'
+			}
+		}
 	}))
 	const classes = useStyles()
 	const { i18n, t } = useTranslation()
 	return (
 		<Box>
-			<Typography variant='h5'>{t('cardTitle')}</Typography>
-			<Paper elevation={3} className={classes.card}>
-				<Box display='flex' flexDirection='row'>
-					<IconButton>
-						<GithubCircle className={classes.icons} />
-					</IconButton>
-					<Box display='flex' flexDirection='column' justifyContent='center'>
-						<Typography variant='h5'>Github</Typography>
-						<Typography variant='body1'>{t('githubDesc')}</Typography>
+			<Box mt={4}>
+				<Paper elevation={3} className={classes.card}>
+					<Box display='flex' flexDirection='row'>
+						<IconButton target='_blank' href='https://github.com/Venturh'>
+							<GithubCircle className={classes.icons} />
+						</IconButton>
+						<Box className={classes.cardText}>
+							<Typography variant='h6'>Github</Typography>
+							<Typography variant='body1'>{t('githubDesc')}</Typography>
+						</Box>
 					</Box>
-				</Box>
-			</Paper>
+				</Paper>
 
-			<Paper elevation={3} className={classes.card}>
-				<Box display='flex' flexDirection='row'>
-					<IconButton>
-						<GooglePlay className={classes.icons} />
-					</IconButton>
-					<Box display='flex' flexDirection='column' justifyContent='center'>
-						<Typography variant='h5'>Google Play</Typography>
-						<Typography variant='body1'>{t('playstoreDesc')}</Typography>
+				<Paper elevation={3} className={classes.card}>
+					<Box display='flex' flexDirection='row'>
+						<IconButton
+							target='_blank'
+							href='https://play.google.com/store/apps/developer?id=Venturh&hl=en_US'
+						>
+							<GooglePlay className={classes.icons} />
+						</IconButton>
+						<Box className={classes.cardText}>
+							<Typography variant='h6'>Google Play</Typography>
+							<Typography variant='body1'>{t('playstoreDesc')}</Typography>
+						</Box>
 					</Box>
-				</Box>
-			</Paper>
+				</Paper>
 
-			<Paper elevation={3} className={classes.card}>
-				<Box display='flex' flexDirection='row'>
-					<IconButton>
-						<Linkedin className={classes.icons} />
-					</IconButton>
-					<Box display='flex' flexDirection='column' justifyContent='center'>
-						<Typography variant='h5'>LinkedIn</Typography>
-						<Typography variant='body1'>{t('linkedinDesc')}</Typography>
+				<Paper elevation={3} className={classes.card}>
+					<Box display='flex' flexDirection='row'>
+						<IconButton>
+							<Linkedin className={classes.icons} />
+						</IconButton>
+						<Box className={classes.cardText}>
+							<Typography variant='h6'>LinkedIn</Typography>
+							<Typography variant='body1'>{t('linkedinDesc')}</Typography>
+						</Box>
 					</Box>
-				</Box>
-			</Paper>
+				</Paper>
+			</Box>
 		</Box>
 	)
 }

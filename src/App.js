@@ -74,7 +74,6 @@ function App() {
 					<Welcome />
 					<Projects />
 					<Experience />
-					<About />
 					<Contact />
 				</MuiThemeProvider>
 			</I18nextProvider>

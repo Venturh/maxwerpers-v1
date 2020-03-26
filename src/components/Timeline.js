@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
 				content: '""',
 				position: 'absolute',
 				width: '4px',
-				height: '100%',
+				height: '80%',
+				marginTop: 80,
 				left: 'calc(50% - 2px)'
 			}
 		},
@@ -46,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 			marginBottom: 0,
 			width: '50%',
 			maxWidth: '70%',
-			'&:nth-child(odd)': {
+			'&:nth-child(even)': {
 				alignSelf: 'flex-end',
 				justifyContent: 'flex-start',
 				paddingLeft: '30px',
@@ -117,23 +118,22 @@ const useStyles = makeStyles((theme) => ({
 		timelineContainer: {
 			display: 'flex',
 			flexDirection: 'column',
-			alignItems: 'center',
-			margin: theme.spacing(3),
 			'&::after': {
 				backgroundColor: theme.palette.primary.main,
 				content: '""',
 				position: 'absolute',
 				width: '4px',
 				height: '90%',
-				marginTop: '10%',
+				marginTop: '5%',
 				left: 'calc(50% - 2px)'
 			}
 		},
 		timelineItem: {
 			width: '100%',
 			marginTop: theme.spacing(2),
-			zIndex: '1'
+			zIndex: 1
 		},
+		card: { backgroundColor: theme.palette.background.paper, minWidth: '100%' },
 		cardLocation: {
 			display: 'flex',
 			justifyContent: 'flex-start'

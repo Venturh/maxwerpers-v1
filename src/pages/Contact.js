@@ -23,22 +23,23 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: 'column',
 		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
-			height: '100%'
+			height: '100%',
+			marginLeft: theme.spacing(3),
+			marginRight: theme.spacing(3)
 		}
 	},
 	title: {
 		[theme.breakpoints.up('md')]: { margin: theme.spacing(10) },
 		[theme.breakpoints.down('sm')]: {
-			marginTop: theme.spacing(5)
+			marginTop: theme.spacing(5),
+			marginBottom: theme.spacing(5)
 		}
 	},
-	formItems: {
+	contactItems: {
 		display: 'flex',
 		justifyContent: 'center',
-		width: '100%',
 		[theme.breakpoints.down('sm')]: {
-			flexDirection: 'column',
-			width: '80%'
+			flexDirection: 'column'
 		}
 	},
 	form: {
@@ -51,7 +52,15 @@ const useStyles = makeStyles((theme) => ({
 		width: 2,
 		backgroundColor: theme.palette.primary.main,
 		marginLeft: theme.spacing(4),
-		marginRight: theme.spacing(4)
+		marginRight: theme.spacing(4),
+		[theme.breakpoints.down('sm')]: {
+			display: 'none'
+		}
+	},
+	formtitles: {
+		[theme.breakpoints.down('sm')]: {
+			display: 'none'
+		}
 	}
 }))
 
@@ -66,12 +75,20 @@ export default function Contact() {
 					{t('contact')}
 				</Typography>
 			</Box>
-			<Box className={classes.formItems}>
+			<Box className={classes.contactItems}>
 				<Box className={classes.form}>
+					<Typography variant='h6' className={classes.formtitles}>
+						{t('contactme')}
+					</Typography>
 					<ContactForm />
 				</Box>
 				<Divider orientation='vertical' flexItem className={classes.divider} />
-				<ContactCard />
+				<Box className={classes.contactCards}>
+					<Typography variant='h6' className={classes.formtitles}>
+						{t('cardTitle')}
+					</Typography>
+					<ContactCard />
+				</Box>
 			</Box>
 		</Box>
 	)

@@ -17,20 +17,24 @@ import Timeline from '../components/Timeline'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
-		height: '100vh',
 		display: 'flex',
+		height: '100%',
 		flexDirection: 'column',
-		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
+			marginLeft: theme.spacing(3),
+			marginRight: theme.spacing(3),
 			height: '100%'
 		}
 	},
 	title: {
-		justifyContent: 'center',
-		alignItems: 'center',
-		[theme.breakpoints.up('md')]: { margin: theme.spacing(10) },
+		alignSelf: 'center',
+		[theme.breakpoints.up('md')]: {
+			marginTop: theme.spacing(10),
+			marginBottom: theme.spacing(10)
+		},
 		[theme.breakpoints.down('sm')]: {
-			marginTop: theme.spacing(5)
+			marginTop: theme.spacing(5),
+			marginBottom: theme.spacing(5)
 		}
 	}
 }))

@@ -26,15 +26,19 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: 'column',
 		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
+			marginLeft: theme.spacing(3),
+			marginRight: theme.spacing(3),
 			height: '100%'
 		}
 	},
 	title: {
 		[theme.breakpoints.up('md')]: {
-			margin: theme.spacing(10)
+			marginTop: theme.spacing(10),
+			marginBottom: theme.spacing(10)
 		},
 		[theme.breakpoints.down('sm')]: {
-			marginTop: theme.spacing(5)
+			marginTop: theme.spacing(5),
+			marginBottom: theme.spacing(5)
 		}
 	},
 	projectList: {
@@ -51,8 +55,7 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down('sm')]: {
 			gridTemplateColumns: ' auto auto',
 			[theme.breakpoints.down('xs')]: {
-				gridTemplateColumns: ' auto',
-				margin: theme.spacing(3)
+				gridTemplateColumns: ' auto'
 			}
 		}
 	}
