@@ -48,8 +48,6 @@ const useStyles = makeStyles((theme) => ({
 		}
 	},
 	projectList: {
-		marginLeft: theme.spacing(10),
-		marginRight: theme.spacing(10),
 		display: 'grid',
 		gap: '1rem 1rem',
 		[theme.breakpoints.up('lg')]: {
