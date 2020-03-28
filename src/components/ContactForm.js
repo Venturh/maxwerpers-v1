@@ -1,8 +1,18 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { TextField, Typography, Button, IconButton, Box, Paper } from '@material-ui/core/'
+import {
+	TextField,
+	Typography,
+	Button,
+	IconButton,
+	Box,
+	Paper,
+	Snackbar,
+	SnackbarContent
+} from '@material-ui/core/'
 import { useTranslation } from 'react-i18next'
-import { GooglePlay, GithubCircle, Linkedin } from 'mdi-material-ui'
+import { GooglePlay, GithubCircle, Linkedin, Telegram } from 'mdi-material-ui'
+import CloseIcon from '@material-ui/icons/Close'
 
 export default function ContactForm() {
 	const useStyles = makeStyles((theme) => ({
@@ -22,6 +32,10 @@ export default function ContactForm() {
 		formitems: {
 			marginTop: 10,
 			marginBottom: 10
+		},
+		snackbar: {
+			backgroundColor: theme.palette.primary.main,
+			color: theme.palette.text.primary
 		}
 	}))
 
@@ -48,9 +62,21 @@ export default function ContactForm() {
 	const [
 		status,
 		setStatus
-	] = useState(true)
+	] = useState('')
 
 	const { t } = useTranslation()
+	const [
+		open,
+		setOpen
+	] = React.useState(false)
+
+	const handleClose = (event, reason) => {
+		if (reason === 'clickaway') {
+			return
+		}
+
+		setOpen(false)
+	}
 
 	const handleSubmit = (e) => {
 		const data = { 'form-name': 'contact', email, name, message }
@@ -58,9 +84,14 @@ export default function ContactForm() {
 			method: 'POST',
 			body: encode(data)
 		})
-			.then(() => setStatus(true))
-			.catch((error) => setStatus(false))
-
+			.then(
+				() => setStatus('Die Nachricht wurde gesendet'),
+				setEmail(''),
+				setMessage(''),
+				setName('')
+			)
+			.catch((error) => setStatus('Sorry'))
+		setOpen(true)
 		e.preventDefault()
 	}
 
@@ -104,12 +135,31 @@ export default function ContactForm() {
 				<Button variant='contained' color='secondary' type='submit' className={classes.formitems}>
 					{t('submit')}
 				</Button>
+				<Snackbar
+					anchorOrigin={{
+						vertical: 'bottom',
+						horizontal: 'center'
+					}}
+					open={open}
+					autoHideDuration={6000}
+					onClose={handleClose}
+				>
+					<SnackbarContent
+						className={classes.snackbar}
+						message={status}
+						action={
+							<IconButton size='small' aria-label='close' color='inherit' onClick={handleClose}>
+								<CloseIcon fontSize='small' />
+							</IconButton>
+						}
+					/>
+				</Snackbar>
 			</form>
 		</Box>
 	)
 }
 
-export function ContactCard() {
+export function ContactCard(props) {
 	const useStyles = makeStyles((theme) => ({
 		card: {
 			display: 'flex',
@@ -122,6 +172,9 @@ export function ContactCard() {
 		icons: {
 			fontSize: 80,
 			color: theme.palette.primary.main,
+			[theme.breakpoints.down('1150')]: {
+				fontSize: 45
+			},
 			[theme.breakpoints.down('sm')]: {
 				fontSize: 45
 			}
@@ -138,47 +191,39 @@ export function ContactCard() {
 	}))
 	const classes = useStyles()
 	const { t } = useTranslation()
+
+	function FieldIcon({ name }) {
+		switch (name) {
+			case 'GithubCircle':
+				return <GithubCircle className={classes.icons} />
+			case 'GooglePlay':
+				return <GooglePlay className={classes.icons} />
+			case 'Linkedin':
+				return <Linkedin className={classes.icons} />
+			case 'Telegram':
+				return <Telegram className={classes.icons} />
+
+			default:
+				return <GithubCircle className={classes.icons} />
+		}
+	}
+
 	return (
 		<Box>
 			<Box mt={4}>
-				<Paper elevation={3} className={classes.card}>
-					<Box display='flex' flexDirection='row'>
-						<IconButton target='_blank' href='https://github.com/Venturh'>
-							<GithubCircle className={classes.icons} />
-						</IconButton>
-						<Box className={classes.cardText}>
-							<Typography variant='h6'>Github</Typography>
-							<Typography variant='body1'>{t('githubDesc')}</Typography>
+				{props.info.map((data) => (
+					<Paper key={data.title} elevation={3} className={classes.card}>
+						<Box display='flex' flexDirection='row'>
+							<IconButton target='_blank' href={data.link}>
+								<FieldIcon name={data.icon} />
+							</IconButton>
+							<Box className={classes.cardText}>
+								<Typography variant='h6'>{data.title}</Typography>
+								<Typography variant='body1'>{t(data.text)}</Typography>
+							</Box>
 						</Box>
-					</Box>
-				</Paper>
-
-				<Paper elevation={3} className={classes.card}>
-					<Box display='flex' flexDirection='row'>
-						<IconButton
-							target='_blank'
-							href='https://play.google.com/store/apps/developer?id=Venturh&hl=en_US'
-						>
-							<GooglePlay className={classes.icons} />
-						</IconButton>
-						<Box className={classes.cardText}>
-							<Typography variant='h6'>Google Play</Typography>
-							<Typography variant='body1'>{t('playstoreDesc')}</Typography>
-						</Box>
-					</Box>
-				</Paper>
-
-				<Paper elevation={3} className={classes.card}>
-					<Box display='flex' flexDirection='row'>
-						<IconButton>
-							<Linkedin className={classes.icons} />
-						</IconButton>
-						<Box className={classes.cardText}>
-							<Typography variant='h6'>LinkedIn</Typography>
-							<Typography variant='body1'>{t('linkedinDesc')}</Typography>
-						</Box>
-					</Box>
-				</Paper>
+					</Paper>
+				))}
 			</Box>
 		</Box>
 	)

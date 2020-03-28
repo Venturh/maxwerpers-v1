@@ -1,8 +1,8 @@
 let de = {
 	translations: {
-		welcomeTitle: 'Hello, my name is',
+		welcomeTitle: 'Hallo, ich heiße',
 		welcomeMsg: 'Max Werpers',
-		welcomeSub: ' Welcome to my portfolio !',
+		welcomeSub: ' Wilkommen zu meinem Portfolio !',
 		infoSub:
 			'Studying Media science in my seventh semester and currently looking for an internship !',
 		student: 'Medieninformatiker',
@@ -38,7 +38,8 @@ let de = {
 		githubDesc: 'Schau dir meine "Open Source" Projekte auf Github an',
 		playstoreDesc:
 			'Auf meinem Google Play Store Profil findest du einige Apps die ich veröffentlicht habe',
-		linkedinDesc: 'Hier gehts zu meinem Linkedin Profil'
+		linkedinDesc: 'Hier gehts zu meinem Linkedin Profil',
+		telegramDesc: 'Schreib mir auf Telegram'
 	}
 }
 

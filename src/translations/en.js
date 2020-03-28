@@ -37,8 +37,9 @@ let en = {
 
 		cardTitle: 'Find me on ...',
 		githubDesc: 'Take a look at my latest open source projects',
-		playstoreDesc: 'Here you can find some of my Apps that I published on the Google Play Store',
-		linkedinDesc: 'Check out my Linkedin Profile'
+		playstoreDesc: 'Here you can find some of my Apps that I published',
+		linkedinDesc: 'Check out my Linkedin Profile',
+		telegramDesc: 'If you want you can write me on Telegram'
 	}
 }
 

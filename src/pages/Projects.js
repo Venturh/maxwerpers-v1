@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Typography } from '@material-ui/core'
+import { Box, Container, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { useTranslation } from 'react-i18next'
 import ApolloClient from 'apollo-boost'
 import { gql } from 'apollo-boost'
 import Project from '../components/Project'
 import Fade from 'react-reveal/Fade'
-import rocket from '../assets/rocket.svg'
+import rocket from '../assets/rocket3.svg'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
 		height: '100vh',
 		display: 'flex',
 		flexDirection: 'column',
+		marginLeft: theme.spacing(10),
+		marginRight: theme.spacing(10),
 
 		[theme.breakpoints.down('sm')]: {
 			marginLeft: theme.spacing(3),
@@ -24,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
 		}
 	},
 	title: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignSelf: 'center',
 		[theme.breakpoints.up('md')]: {
 			marginTop: theme.spacing(10)
 		},
@@ -57,6 +62,13 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.down('lg')]: {
 			height: '80%'
 		}
+	},
+	titleUnder: {
+		width: '10%',
+		height: 10,
+		borderRadius: 25,
+		backgroundColor: theme.palette.secondary.main,
+		margingTop: theme.spacing(2)
 	}
 }))
 
@@ -120,11 +132,14 @@ export default function Projects() {
 
 	return (
 		<Box id='projects' className={classes.page}>
-			<Box className={classes.title}>
-				<Typography align='center' variant='h3'>
-					{t('projects')}
-				</Typography>
-			</Box>
+			<Container className={classes.title}>
+				<Box display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
+					<Typography variant='h3'>{t('projects')}</Typography>
+					<Fade left>
+						<div className={classes.titleUnder} />
+					</Fade>
+				</Box>
+			</Container>
 			<Box display='flex'>
 				<Box className={classes.imageWrap}>
 					<Fade up cascade>

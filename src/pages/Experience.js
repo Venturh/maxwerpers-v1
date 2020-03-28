@@ -1,8 +1,9 @@
 import React from 'react'
-import { Box, Typography } from '@material-ui/core'
+import { Container, Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { useTranslation } from 'react-i18next'
 import Timeline from '../components/Timeline'
+import Fade from 'react-reveal/Fade'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
@@ -25,6 +26,13 @@ const useStyles = makeStyles((theme) => ({
 			marginTop: theme.spacing(5),
 			marginBottom: theme.spacing(5)
 		}
+	},
+	titleUnder: {
+		width: '10%',
+		height: 10,
+		borderRadius: 25,
+		backgroundColor: theme.palette.secondary.main,
+		margingTop: theme.spacing(2)
 	}
 }))
 
@@ -34,9 +42,14 @@ function Experience() {
 
 	return (
 		<Box id='experience' className={classes.page}>
-			<Typography variant='h3' className={classes.title}>
-				{t('experience')}
-			</Typography>
+			<Container className={classes.title}>
+				<Box display='flex' flexDirection='column' alignItems='center' justifyContent='center'>
+					<Typography variant='h3'>{t('experience')}</Typography>
+					<Fade left>
+						<div className={classes.titleUnder} />
+					</Fade>
+				</Box>
+			</Container>
 			<Box alignItems='flex-start'>
 				<Timeline />
 			</Box>
