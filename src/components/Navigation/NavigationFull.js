@@ -1,19 +1,5 @@
 import React, { useState } from 'react'
-import {
-	Box,
-	Button,
-	IconButton,
-	Toolbar,
-	AppBar,
-	Menu,
-	MenuItem,
-	Slide,
-	Typography,
-	Tabs,
-	Tab,
-	Grid,
-	Container
-} from '@material-ui/core'
+import { Box, Button, IconButton, Tabs, Tab } from '@material-ui/core'
 import BrightnessHighIcon from '@material-ui/icons/BrightnessHigh'
 import Brightness4Icon from '@material-ui/icons/Brightness4'
 import { makeStyles } from '@material-ui/styles'
@@ -63,7 +49,7 @@ function Navigation(props) {
 		tabposition,
 		setTabposition
 	] = useState(0)
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 	const ForwardNavLink = React.forwardRef((props, ref) => <HashLink {...props} innerRef={ref} />)
 
 	const handleTabChange = (e, tabposition) => {

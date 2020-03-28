@@ -1,19 +1,7 @@
-import React, { useState } from 'react'
-import {
-	Button,
-	Box,
-	Toolbar,
-	Grid,
-	AppBar,
-	Typography,
-	IconButton,
-	Paper,
-	Card,
-	CardContent
-} from '@material-ui/core'
+import React from 'react'
+import { Box, Typography, Card, CardContent } from '@material-ui/core'
 import LocationOnIcon from '@material-ui/icons/LocationOn'
 import { makeStyles } from '@material-ui/core/styles'
-import Zoom from 'react-reveal/Zoom'
 import { useTranslation } from 'react-i18next'
 import './style.css'
 
@@ -144,11 +132,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Timeline() {
 	const classes = useStyles()
-	const { i18n, t } = useTranslation()
-	const [
-		activeStep,
-		setActiveStep
-	] = useState(0)
 
 	return (
 		<Box className={classes.timelineContainer}>
@@ -159,7 +142,7 @@ export default function Timeline() {
 
 function TimelineItem({ info }) {
 	const classes = useStyles()
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 	return (
 		<Box className={classes.timelineItem}>
 			<Box className={classes.timelineItemContent}>

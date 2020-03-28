@@ -9,12 +9,14 @@ import Welcome from './pages/Welcome'
 import Projects from './pages/Projects'
 import Experience from './pages/Experience'
 import About from './pages/About'
+import Start2 from './pages/Start2'
 import Contact from './pages/Contact'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
 import deepPurple from '@material-ui/core/colors/deepPurple'
 import teal from '@material-ui/core/colors/teal'
+import { Toolbar } from '@material-ui/core'
 
-function App() {
+export default function App() {
 	const initialTheme = () => String(localStorage.getItem('theme') || 'dark')
 
 	const [
@@ -33,28 +35,22 @@ function App() {
 				main: deepPurple[300]
 			},
 			secondary: {
-				main: teal['A200']
+				main:
+
+						themeType === 'light' ? teal[400] :
+						teal['A200']
 			},
 			background: {
 				default:
 
-						themeType == 'light' ? '#efefef' :
+						themeType === 'light' ? '#efefef' :
 						'#303030',
 				paper:
 
-						themeType == 'light' ? '#ffffff' :
+						themeType === 'light' ? '#ffffff' :
 						'#3c3c3c'
 			},
 			type: themeType
-		},
-		breakpoints: {
-			values: {
-				xs: 0,
-				sm: 700,
-				md: 960,
-				lg: 1024,
-				xl: 1600
-			}
 		},
 		typography: {
 			fontFamily: "'Roboto', sans-serif",
@@ -79,7 +75,8 @@ function App() {
 				<MuiThemeProvider theme={theme}>
 					<CssBaseline />
 					<Navbar themeToggle={themeToggle} themeType={themeType} />
-					<Welcome />
+					<Toolbar id='home' />
+					<Start2 />
 					<Projects />
 					<Experience />
 					<Contact />
@@ -88,50 +85,3 @@ function App() {
 		</div>
 	)
 }
-
-export default App
-
-/**old
-
-import React, { useState } from 'react'
-import { I18nextProvider } from 'react-i18next'
-import i18n from './translations/i18n'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { MuiThemeProvider } from '@material-ui/core/styles'
-
-import Navbar from './pages/Navbar'
-import Welcome from './pages/Welcome'
-import Resume from './components/Resume'
-import { themeConstants } from './constants/ThemeConstants'
-
-function App() {
-	const [
-		theme,
-		setTheme
-	] = useState(themeConstants.THEME_DARK)
-
-	const themeToggle = () => {
-
-			theme === themeConstants.THEME_DARK ? setTheme(themeConstants.THEME_LIGHT) :
-			setTheme(themeConstants.THEME_DARK)
-	}
-
-	return (
-		<div style={{ margin: 0 }}>
-			<I18nextProvider i18n={i18n}>
-				<MuiThemeProvider theme={theme}>
-					<CssBaseline />
-					<Navbar themeToggle={themeToggle} />
-					<Welcome />
-					<Resume />
-				</MuiThemeProvider>
-			</I18nextProvider>
-		</div>
-	)
-}
-
-export default App
-
-
-
- */

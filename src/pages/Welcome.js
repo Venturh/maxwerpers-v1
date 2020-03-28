@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Box, Button, IconButton, Toolbar, Typography } from '@material-ui/core'
+import React from 'react'
+import { Box, Button, Toolbar, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
 import welcomeImage from '../assets/introCover.svg'
@@ -10,97 +10,88 @@ const useStyles = makeStyles((theme) => ({
 	page: {
 		display: 'flex',
 		alignItems: 'center',
-		width: '90%',
+		justifyContent: 'space-evenly',
 		height: '100vh',
-		margin: 'auto',
-		[theme.breakpoints.down('xs')]: {
+		[theme.breakpoints.down('sm')]: {
 			flexDirection: 'column',
-			marginTop: '10%'
+			marginLeft: theme.spacing(3),
+			marginRight: theme.spacing(3)
 		}
 	},
-	intro: {
-		flex: 1,
-		[theme.breakpoints.down('xs')]: {
-			textAlign: 'center',
-			margin: theme.spacing(5)
-		}
+	contentLeft: { display: 'flex', flexDirection: 'column', textAlign: 'center' },
+	introTextHeader: {
+		marginTop: theme.spacing(2)
 	},
-	introTextWrap: {},
-	introTextHeader: {},
-	introTextSub: { marginTop: theme.spacing(2), marginBottom: theme.spacing(2) },
-
-	infoBtnWrap: {
-		[theme.breakpoints.down('xs')]: {
+	introTextSub: {
+		margin: theme.spacing(2)
+	},
+	btn: {
+		[theme.breakpoints.down('sm')]: {
 			display: 'flex',
 			flexDirection: 'column',
 			alignItems: 'center'
 		}
 	},
 	infoBtn: {
-		margin: theme.spacing(2),
-		marginTop: theme.spacing(2),
-		[theme.breakpoints.down('xs')]: { marginTop: theme.spacing(2), margin: theme.spacing(0) }
+		marginLeft: theme.spacing(2),
+		[theme.breakpoints.down('sm')]: {
+			maxWidth: '50%',
+			minWidth: '50%',
+			marginTop: theme.spacing(2)
+		}
 	},
-	coverImgWrap: {
-		flex: 1,
-		display: 'flex',
-		justifyContent: 'center',
-		height: '60vh',
-		[theme.breakpoints.down('xs')]: { marginBottom: '5%' }
-	},
-	coverImg: {
-		height: '100%',
-		[theme.breakpoints.down('xs')]: {
-			height: '60%'
+	contentRight: { flex: 1 },
+	img: {
+		height: '50vh',
+		[theme.breakpoints.down('md')]: {
+			height: '40vh'
 		}
 	}
 }))
 
 export default function WelcomePage(props) {
 	const classes = useStyles()
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 	const ForwardNavLink = React.forwardRef((props, ref) => <HashLink {...props} innerRef={ref} />)
 	return (
 		<React.Fragment>
 			<Toolbar id='home' />
 			<Box className={classes.page}>
-				<Box id='intro' className={classes.intro}>
-					<Box textAlign='center' id='intro-text' className={classes.introTextWrap}>
-						<Typography id='start' variant='h3' color='primary' className={classes.introTextHeader}>
-							{t('welcomeMsg')}
-						</Typography>
-						<Box className={classes.introTextSub}>
-							<SubAnimation />
-						</Box>
+				<Box id='intro' className={classes.contentLeft}>
+					<Typography variant='h3' color='primary' className={classes.introTextHeader}>
+						{t('welcomeMsg')}
+					</Typography>
+					<Box className={classes.introTextSub}>
+						<SubAnimation />
+					</Box>
 
-						<Box className={classes.infoBtnWrap}>
-							<Button
-								size='large'
-								variant='contained'
-								color='secondary'
-								component={ForwardNavLink}
-								smooth
-								to='/#projects'
-								className={classes.infoBtn}
-							>
-								{t('projects')}
-							</Button>
-							<Button
-								size='large'
-								variant='contained'
-								color='primary'
-								component={ForwardNavLink}
-								smooth
-								to='/#experience'
-								className={classes.infoBtn}
-							>
-								{t('Experience')}
-							</Button>
-						</Box>
+					<Box className={classes.btn}>
+						<Button
+							size='large'
+							variant='contained'
+							color='secondary'
+							component={ForwardNavLink}
+							smooth
+							to='/#projects'
+							className={classes.infoBtn}
+						>
+							{t('projects')}
+						</Button>
+						<Button
+							size='large'
+							variant='contained'
+							color='primary'
+							component={ForwardNavLink}
+							smooth
+							to='/#experience'
+							className={classes.infoBtn}
+						>
+							{t('Experience')}
+						</Button>
 					</Box>
 				</Box>
-				<Box className={classes.coverImgWrap}>
-					<img className={classes.coverImg} src={welcomeImage} />
+				<Box className='contentRight'>
+					<img className={classes.img} src={welcomeImage} alt='img' />
 				</Box>
 			</Box>
 		</React.Fragment>

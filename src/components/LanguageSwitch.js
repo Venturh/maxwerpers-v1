@@ -8,7 +8,7 @@ export default function LanguageSwitch() {
 		anchorEl,
 		setAnchorEl
 	] = React.useState(null)
-	const { t, i18n } = useTranslation()
+	const { i18n } = useTranslation()
 
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget)

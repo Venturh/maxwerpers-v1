@@ -1,16 +1,5 @@
-import React, { useState } from 'react'
-import {
-	Button,
-	Box,
-	Toolbar,
-	Grid,
-	AppBar,
-	Typography,
-	IconButton,
-	Paper,
-	Card,
-	Divider
-} from '@material-ui/core'
+import React from 'react'
+import { Box, Typography, Divider } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { useTranslation } from 'react-i18next'
 import ContactForm from '../components/ContactForm'
@@ -87,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Contact() {
 	const classes = useStyles()
-	const { i18n, t } = useTranslation()
+	const { t } = useTranslation()
 
 	return (
 		<Box id='contact' className={classes.page}>
@@ -112,7 +101,7 @@ export default function Contact() {
 						<ContactCard />
 					</Box>
 					<Box className={classes.imageWrap}>
-						<img className={classes.projectImg} src={welcomeImage} />
+						<img className={classes.projectImg} src={welcomeImage} alt='img' />
 					</Box>
 				</Box>
 			</Box>

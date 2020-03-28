@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { TextField, Typography, Button, IconButton, SvgIcon, Box, Paper } from '@material-ui/core/'
+import { TextField, Typography, Button, IconButton, Box, Paper } from '@material-ui/core/'
 import { useTranslation } from 'react-i18next'
 import { GooglePlay, GithubCircle, Linkedin } from 'mdi-material-ui'
 
@@ -48,9 +48,9 @@ export default function ContactForm() {
 	const [
 		status,
 		setStatus
-	] = useState('')
+	] = useState(true)
 
-	const { i18n, t } = useTranslation()
+	const { t } = useTranslation()
 
 	const handleSubmit = (e) => {
 		const data = { 'form-name': 'contact', email, name, message }
@@ -58,8 +58,8 @@ export default function ContactForm() {
 			method: 'POST',
 			body: encode(data)
 		})
-			.then(() => setStatus('Form Submission Successful!!'))
-			.catch((error) => setStatus('Form Submission Failed!'))
+			.then(() => setStatus(true))
+			.catch((error) => setStatus(false))
 
 		e.preventDefault()
 	}
@@ -137,7 +137,7 @@ export function ContactCard() {
 		}
 	}))
 	const classes = useStyles()
-	const { i18n, t } = useTranslation()
+	const { t } = useTranslation()
 	return (
 		<Box>
 			<Box mt={4}>

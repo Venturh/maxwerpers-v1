@@ -1,6 +1,10 @@
 let en = {
 	translations: {
-		welcomeMsg: 'Hello! I am Maximilian',
+		welcomeTitle: 'Hello, my name is',
+		welcomeMsg: 'Max Werpers.',
+		welcomeSub: ' Welcome to my portfolio !',
+		infoSub:
+			'Studying Media science in my seventh semester and currently looking for an internship !',
 		student: 'Media science student',
 		frontdev: 'Front End Developer',
 		backdev: 'Back End Developer',

@@ -1,14 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { Box, Card, CardContent, CardMedia, Typography, Button } from '@material-ui/core'
-import FolderIcon from '@material-ui/icons/Folder'
-import { useTranslation } from 'react-i18next'
-import Fade from 'react-reveal/Fade'
+import React from 'react'
+import { Box, Card, CardContent, Typography, Button } from '@material-ui/core'
 import './style.css'
 
 export default function Project(props) {
-	const { i18m, t } = useTranslation()
-
-	function openLink(url) {}
 	const circle = {
 		bgcolor: props.primaryLanguage.color,
 		style: {

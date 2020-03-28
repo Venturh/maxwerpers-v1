@@ -1,27 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import {
-	Button,
-	Box,
-	Toolbar,
-	Grid,
-	AppBar,
-	Typography,
-	IconButton,
-	Paper,
-	Card,
-	Container
-} from '@material-ui/core'
+import { Box, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { useTranslation } from 'react-i18next'
 import ApolloClient from 'apollo-boost'
 import { gql } from 'apollo-boost'
-import ProjectData from '../constant/ProjectData'
 import Project from '../components/Project'
 import Fade from 'react-reveal/Fade'
-import projectImage from '../assets/project.svg'
 import rocket from '../assets/rocket.svg'
-import rocket2 from '../assets/rocket2.svg'
-import testbg from '../assets/testbg.svg'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
@@ -77,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Projects() {
 	const classes = useStyles()
-	const { i18n, t } = useTranslation()
+	const { t } = useTranslation()
 
 	const [
 		projectData,
@@ -143,7 +128,7 @@ export default function Projects() {
 			<Box display='flex'>
 				<Box className={classes.imageWrap}>
 					<Fade up cascade>
-						<img className={classes.projectImg} src={rocket} />
+						<img className={classes.projectImg} src={rocket} alt='img' />
 					</Fade>
 				</Box>
 

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Bounce from 'react-reveal/Bounce'
 
 export default function IntroSub(props) {
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 	const [
 		show,
 		setShow

@@ -1,6 +1,10 @@
 let de = {
 	translations: {
-		welcomeMsg: 'Hallo! Ich bin Maximilian',
+		welcomeTitle: 'Hello, my name is',
+		welcomeMsg: 'Max Werpers',
+		welcomeSub: ' Welcome to my portfolio !',
+		infoSub:
+			'Studying Media science in my seventh semester and currently looking for an internship !',
 		student: 'Medieninformatiker',
 		frontdev: 'Front End Entwickler',
 		backdev: 'Back End Entwickler',

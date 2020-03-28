@@ -7,7 +7,6 @@ import {
 	List,
 	ListItem,
 	ListItemIcon,
-	ListItemSecondaryAction,
 	ListItemText,
 	Switch
 } from '@material-ui/core'
@@ -33,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavigationMobile(props) {
 	const classes = useStyles()
-	const { t, i18n } = useTranslation()
+	const { t } = useTranslation()
 	const [
 		right,
 		setRight
@@ -83,10 +82,10 @@ export default function NavigationMobile(props) {
 							<ListItem button key={text} component={ForwardNavLink} smooth to={'#' + text}>
 								<ListItemIcon>
 									{
-										index == 0 ? <HomeIcon /> :
-										index == 1 ? <BurstModeIcon /> :
-										index == 2 ? <SchoolIcon /> :
-										index == 3 ? <RecentActorsIcon /> :
+										index === 0 ? <HomeIcon /> :
+										index === 1 ? <BurstModeIcon /> :
+										index === 2 ? <SchoolIcon /> :
+										index === 3 ? <RecentActorsIcon /> :
 										<InfoIcon />}
 								</ListItemIcon>
 								<ListItemText primary={t(text)} />
