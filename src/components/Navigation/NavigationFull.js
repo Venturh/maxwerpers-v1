@@ -87,14 +87,14 @@ function Navigation(props) {
 						smooth
 						to='/#experience'
 					/>
-					<Tab
+					{/* <Tab
 						disableRipple
 						className={classes.tab}
 						label={t('about')}
 						component={ForwardNavLink}
 						smooth
 						to='/#about'
-					/>
+					/> */}
 					<Tab
 						disableRipple
 						className={classes.tab}

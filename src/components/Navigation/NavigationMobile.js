@@ -76,7 +76,7 @@ export default function NavigationMobile(props) {
 							'home',
 							'projects',
 							'experience',
-							'about',
+							//'about',
 							'contact'
 						].map((text, index) => (
 							<ListItem button key={text} component={ForwardNavLink} smooth to={'#' + text}>
