@@ -77,7 +77,7 @@ export default function App() {
 					<CssBaseline />
 					<Navbar themeToggle={themeToggle} themeType={themeType} />
 					<Toolbar id='home' />
-					<Start2 />
+					<Welcome />
 					<Projects />
 					<Experience />
 					<Contact />
