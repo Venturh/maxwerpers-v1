@@ -104,23 +104,24 @@ const useStyles = makeStyles((theme) => ({
 		timelineTitle: {}
 	},
 	[theme.breakpoints.down('sm')]: {
-		timelineContainer: {
-			display: 'flex',
-			flexDirection: 'column',
-			'&::after': {
-				backgroundColor: theme.palette.primary.main,
-				content: '""',
-				position: 'absolute',
-				width: '4px',
-				height: '90%',
-				marginTop: '5%',
-				left: 'calc(50% - 2px)'
-			}
-		},
+		// timelineContainer: {
+		// 	display: 'flex',
+		// 	flexDirection: 'column',
+		// 	'&::after': {
+		// 		backgroundColor: theme.palette.primary.main,
+		// 		content: '""',
+		// 		position: 'absolute',
+		// 		width: '4px',
+		// 		height: '90%',
+		// 		marginTop: '5%',
+		// 		left: 'calc(50% - 2px)',
+		// 		['@media (max-height:600px) ']: {}
+		// 	}
+		// },
 		timelineItem: {
 			width: '100%',
 			marginTop: theme.spacing(2),
-			zIndex: 1
+			zIndex: 0
 		},
 		card: { backgroundColor: theme.palette.background.paper, minWidth: '100%' },
 		cardLocation: {

@@ -1,27 +1,23 @@
 import React from 'react'
-import { Container, Box, Button, Typography } from '@material-ui/core'
+import { Box, Button, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import { useTranslation } from 'react-i18next'
 import { HashLink } from 'react-router-hash-link'
-import SubAnimation from '../components/IntroSub'
-import bg_mobile from '../assets/startbg_mobile.svg'
-import bg from '../assets/testo.svg'
-import cover_large from '../assets/landing_cover_large.svg'
+import { useTheme } from '@material-ui/core/styles'
+import Zoom from 'react-reveal/Zoom'
+import cover_dark from '../assets/landing_cover_dark.svg'
+import cover_light from '../assets/landing_cover_light.svg'
+import shape_1 from '../assets/shape_1.svg'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
 		height: '100vh',
-		// backgroundImage: `url(${bg})`,
-		// backgroundRepeat: 'no-repeat',
-		// backgroundSize: '30%',
-		// backgroundPosition: 'left bottom',
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
-		justifyContent: 'space-evenly',
+		justifyContent: 'space-around',
 
-		[theme.breakpoints.down('700')]: {
-			//	backgroundImage: `url(${bg_mobile})`,
+		[theme.breakpoints.down('sm')]: {
 			flexDirection: 'column-reverse',
 			justifyContent: 'center',
 			textAlign: 'center'
@@ -30,14 +26,14 @@ const useStyles = makeStyles((theme) => ({
 
 	info: {
 		marginLeft: theme.spacing(10),
-		[theme.breakpoints.down('700')]: {
+		[theme.breakpoints.down('sm')]: {
+			marginRight: theme.spacing(3),
 			marginLeft: theme.spacing(3)
 		}
 	},
 	btn: {
-		alignItems: 'center',
-		[theme.breakpoints.down('700')]: {
-			display: 'flex',
+		display: 'flex',
+		[theme.breakpoints.down('sm')]: {
 			flexDirection: 'column',
 			alignItems: 'center'
 		}
@@ -45,26 +41,33 @@ const useStyles = makeStyles((theme) => ({
 	infoBtn: {
 		marginTop: theme.spacing(2),
 		marginRight: theme.spacing(2),
-		[theme.breakpoints.down('700')]: {
+		[theme.breakpoints.down('sm')]: {
 			minWidth: '50%'
 		},
-		[theme.breakpoints.up('700')]: {
+		[theme.breakpoints.up('sm')]: {
 			width: '100%'
 		}
 	},
 	imgDiv: {
 		marginRight: theme.spacing(10),
-		[theme.breakpoints.down('700')]: {
-			marginRight: theme.spacing(3)
-		}
+		[theme.breakpoints.down('sm')]: { margin: 0 }
 	},
 	img: {
 		height: '60vh',
 		[theme.breakpoints.down('1000')]: {
 			height: '40vh'
 		},
-		[theme.breakpoints.down('700')]: {
+		[theme.breakpoints.down('sm')]: {
 			height: '30vh'
+		}
+	},
+	shape_1: {
+		position: 'absolute',
+		zIndex: -1,
+		top: 100,
+		right: 0,
+		[theme.breakpoints.down('sm')]: {
+			height: '3%'
 		}
 	}
 }))
@@ -73,10 +76,12 @@ export default function Welcome(props) {
 	const classes = useStyles()
 	const { t } = useTranslation()
 	const ForwardNavLink = React.forwardRef((props, ref) => <HashLink {...props} innerRef={ref} />)
+	const theme = useTheme()
+
 	return (
 		<Box className={classes.page}>
 			<Box className={classes.info}>
-				<Typography variant='subtitle2' color='secondary' className={classes.introTextHeader}>
+				<Typography variant='body2' color='secondary' className={classes.introTextHeader}>
 					{t('welcomeTitle')}
 				</Typography>
 				<Box mt={0.5}>
@@ -94,7 +99,7 @@ export default function Welcome(props) {
 					<Button
 						size='large'
 						variant='contained'
-						color='secondary'
+						color='primary'
 						component={ForwardNavLink}
 						smooth
 						to='/#projects'
@@ -105,19 +110,32 @@ export default function Welcome(props) {
 					<Button
 						size='large'
 						variant='contained'
-						color='primary'
+						color='secondary'
 						component={ForwardNavLink}
 						smooth
 						to='/#experience'
 						className={classes.infoBtn}
 					>
-						{t('Experience')}
+						{t('experience')}
 					</Button>
 				</Box>
 			</Box>
 			<Box className={classes.imgDiv}>
-				<img className={classes.img} src={cover_large} alt='img' />
+				<Zoom>
+					<img
+						className={classes.img}
+						src={
+
+								theme.palette.type === 'light' ? cover_light :
+								cover_dark
+						}
+						alt='img'
+					/>
+				</Zoom>
 			</Box>
+			<Zoom>
+				<img className={classes.shape_1} src={shape_1} alt='img' />
+			</Zoom>
 		</Box>
 	)
 }

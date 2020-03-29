@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 	divider: {
 		backgroundColor: theme.palette.primary.main
 	},
-	paper: { top: '5vh' }
+	paper: { top: '7vh', backgroundColor: theme.palette.background.default }
 }))
 
 export default function NavigationMobile(props) {

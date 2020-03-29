@@ -9,12 +9,10 @@ import Welcome from './pages/Welcome'
 import Projects from './pages/Projects'
 import Experience from './pages/Experience'
 import About from './pages/About'
-import Start2 from './pages/Start2'
 import Contact from './pages/Contact'
 import Footer from './pages/Footer'
 import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles'
-import deepPurple from '@material-ui/core/colors/deepPurple'
-import teal from '@material-ui/core/colors/teal'
+import { deepPurple, teal, grey } from '@material-ui/core/colors'
 import { Toolbar } from '@material-ui/core'
 
 export default function App() {
@@ -33,19 +31,22 @@ export default function App() {
 		},
 		palette: {
 			primary: {
-				main: deepPurple[300]
+				main:
+
+						themeType === 'light' ? deepPurple['700'] :
+						deepPurple[500]
 			},
 			secondary: {
 				main:
 
-						themeType === 'light' ? teal[400] :
+						themeType === 'light' ? teal['A400'] :
 						teal['A200']
 			},
 			background: {
 				default:
 
-						themeType === 'light' ? '#efefef' :
-						'#303030',
+						themeType === 'light' ? grey['100'] :
+						grey['900'],
 				paper:
 
 						themeType === 'light' ? '#ffffff' :

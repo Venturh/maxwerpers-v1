@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Box, Container, Typography } from '@material-ui/core'
+import { Box, Button, Container, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import { useTranslation } from 'react-i18next'
 import ApolloClient from 'apollo-boost'
 import { gql } from 'apollo-boost'
 import Project from '../components/Project'
 import Fade from 'react-reveal/Fade'
-import rocket from '../assets/rocket3.svg'
+import rocket_dark from '../assets/rocket_dark.svg'
 
 const useStyles = makeStyles((theme) => ({
 	page: {
@@ -143,7 +143,7 @@ export default function Projects() {
 			<Box display='flex'>
 				<Box className={classes.imageWrap}>
 					<Fade up cascade>
-						<img className={classes.projectImg} src={rocket} alt='img' />
+						<img className={classes.projectImg} src={rocket_dark} alt='img' />
 					</Fade>
 				</Box>
 
@@ -152,6 +152,16 @@ export default function Projects() {
 						<Box className={classes.projectList}>
 							{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
 							{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
+						</Box>
+						<Box mt={2}>
+							<Button
+								href='https://github.com/Venturh'
+								target='_blank'
+								variant='contained'
+								color='primary'
+							>
+								Show more
+							</Button>
 						</Box>
 					</Fade>
 				</Box>

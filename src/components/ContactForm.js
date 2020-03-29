@@ -11,7 +11,7 @@ import {
 	SnackbarContent
 } from '@material-ui/core/'
 import { useTranslation } from 'react-i18next'
-import { GooglePlay, GithubCircle, Linkedin, Telegram } from 'mdi-material-ui'
+import { GooglePlay, GithubCircle, Linkedin, Telegram, Email } from 'mdi-material-ui'
 import CloseIcon from '@material-ui/icons/Close'
 
 export default function ContactForm() {
@@ -19,12 +19,7 @@ export default function ContactForm() {
 		form: {
 			display: 'flex',
 			flexDirection: 'column',
-			marginTop: theme.spacing(2),
-			'& .MuiOutlinedInput-root': {
-				'& fieldset': {
-					borderColor: theme.palette.primary.main
-				}
-			}
+			marginTop: theme.spacing(2)
 		},
 		input: {
 			color: theme.palette.primary.main
@@ -132,7 +127,7 @@ export default function ContactForm() {
 					}}
 					className={classes.formitems}
 				/>
-				<Button variant='contained' color='secondary' type='submit' className={classes.formitems}>
+				<Button variant='contained' color='primary' type='submit' className={classes.formitems}>
 					{t('submit')}
 				</Button>
 				<Snackbar
@@ -170,7 +165,7 @@ export function ContactCard(props) {
 			}
 		},
 		icons: {
-			fontSize: 80,
+			fontSize: 70,
 			color: theme.palette.primary.main,
 			[theme.breakpoints.down('1150')]: {
 				fontSize: 45
@@ -202,9 +197,11 @@ export function ContactCard(props) {
 				return <Linkedin className={classes.icons} />
 			case 'Telegram':
 				return <Telegram className={classes.icons} />
+			case 'Email':
+				return <Email className={classes.icons} />
 
 			default:
-				return <GithubCircle className={classes.icons} />
+				return
 		}
 	}
 

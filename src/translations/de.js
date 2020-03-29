@@ -39,7 +39,8 @@ let de = {
 		playstoreDesc:
 			'Auf meinem Google Play Store Profil findest du einige Apps die ich veröffentlicht habe',
 		linkedinDesc: 'Hier gehts zu meinem Linkedin Profil',
-		telegramDesc: 'Schreib mir auf Telegram'
+		telegramDesc: 'Schreib mir auf Telegram',
+		emailDesc: 'Oder nutze das Kontaktformular'
 	}
 }
 

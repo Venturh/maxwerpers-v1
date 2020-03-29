@@ -39,7 +39,8 @@ let en = {
 		githubDesc: 'Take a look at my latest open source projects',
 		playstoreDesc: 'Here you can find some of my Apps that I published',
 		linkedinDesc: 'Check out my Linkedin Profile',
-		telegramDesc: 'If you want you can write me on Telegram'
+		telegramDesc: 'If you want you can write me on Telegram',
+		emailDesc: 'Or use the contact form'
 	}
 }
 

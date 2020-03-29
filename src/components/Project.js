@@ -29,11 +29,7 @@ export default function Project(props) {
 					{props.description}
 				</Typography>
 				<Box mt={2}>
-					<Button
-						variant='contained'
-						color='primary'
-						onClick={() => window.open(props.url, '_blank').focus()}
-					>
+					<Button variant='contained' color='primary' href={props.url} target='_blank'>
 						Link
 					</Button>
 					{
@@ -41,7 +37,8 @@ export default function Project(props) {
 							style={{ marginLeft: '10px' }}
 							variant='contained'
 							color='secondary'
-							onClick={() => window.open(props.homepageUrl, '_blank').focus()}
+							href={props.homepageUrl}
+							target='_blank'
 						>
 							Live-Demo
 						</Button> :

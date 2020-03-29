@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
 		flexDirection: 'column',
 		alignItems: 'center',
 		[theme.breakpoints.down('sm')]: {
-			height: '100%',
 			marginLeft: theme.spacing(3),
 			marginRight: theme.spacing(3)
 		}
@@ -75,6 +74,19 @@ const useStyles = makeStyles((theme) => ({
 		height: 10,
 		borderRadius: 25,
 		backgroundColor: theme.palette.secondary.main
+	},
+	paperTopMid: {
+		width: '100%',
+		height: 10,
+		borderRadius: 25,
+		backgroundColor: theme.palette.primary.main
+	},
+	footer: {
+		display: 'flex',
+		marginTop: theme.spacing(10),
+		[theme.breakpoints.down('sm')]: {
+			marginTop: theme.spacing(3)
+		}
 	}
 }))
 
@@ -107,6 +119,12 @@ export default function Contact2() {
 			text: 'telegramDesc',
 			link: 'https://t.me/ven_turh',
 			icon: 'Telegram'
+		},
+		{
+			title: 'Email',
+			text: 'info@maxwerpers.me',
+			link: '',
+			icon: 'Email'
 		}
 	]
 
@@ -139,7 +157,7 @@ export default function Contact2() {
 
 					<Box className={classes.paperM}>
 						<Paper>
-							<div className={classes.paperTop} />
+							<div className={classes.paperTopMid} />
 							<Box m={2}>
 								<ContactForm />
 							</Box>
@@ -162,7 +180,7 @@ export default function Contact2() {
 				</Box>
 			</Container>
 
-			<Box display='flex' style={{ position: 'absolute', bottom: 0 }}>
+			<Box className={classes.footer}>
 				<CopyrightIcon fontSize='small' />
 				<Typography variant='subtitle2'>2020 Max Werpers</Typography>
 			</Box>
