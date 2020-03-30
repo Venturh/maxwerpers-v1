@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 	root: {},
 	nav: {
 		display: 'flex',
-		justifyContent: 'space-around'
+		justifyContent: 'space-between'
 	},
 	tabItems: {
 		display: 'flex',

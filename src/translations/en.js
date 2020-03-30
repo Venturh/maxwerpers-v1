@@ -18,7 +18,7 @@ let en = {
 		timeline01title: 'Bachelor of Science Media Computer Science',
 		timeline01text: 'Hochschule Rhein Main',
 
-		timeline02title: 'Student of Angewandte Informatik',
+		timeline02title: 'Student of applied computer science',
 		timeline02text: 'Hochschule Rhein Main',
 
 		timeline03title: 'Voluntary Year of Social Service',

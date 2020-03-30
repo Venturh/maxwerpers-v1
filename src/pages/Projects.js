@@ -151,7 +151,6 @@ export default function Projects() {
 					<Fade right>
 						<Box className={classes.projectList}>
 							{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
-							{projectData.map((data) => <Project key={data.node.id} {...data.node} />)}
 						</Box>
 						<Box mt={2}>
 							<Button

@@ -101,7 +101,7 @@ export default function Welcome(props) {
 						variant='contained'
 						color='primary'
 						component={ForwardNavLink}
-						mdooth
+						smooth
 						to='/#projects'
 						className={classes.infoBtn}
 					>
@@ -112,7 +112,7 @@ export default function Welcome(props) {
 						variant='contained'
 						color='secondary'
 						component={ForwardNavLink}
-						mdooth
+						smooth
 						to='/#experience'
 						className={classes.infoBtn}
 					>
