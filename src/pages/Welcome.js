@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
 		alignItems: 'center',
 		justifyContent: 'space-around',
 
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('md')]: {
 			flexDirection: 'column-reverse',
 			justifyContent: 'center',
 			textAlign: 'center'
@@ -26,14 +26,14 @@ const useStyles = makeStyles((theme) => ({
 
 	info: {
 		marginLeft: theme.spacing(10),
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('md')]: {
 			marginRight: theme.spacing(3),
 			marginLeft: theme.spacing(3)
 		}
 	},
 	btn: {
 		display: 'flex',
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('md')]: {
 			flexDirection: 'column',
 			alignItems: 'center'
 		}
@@ -41,23 +41,23 @@ const useStyles = makeStyles((theme) => ({
 	infoBtn: {
 		marginTop: theme.spacing(2),
 		marginRight: theme.spacing(2),
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('md')]: {
 			minWidth: '50%'
 		},
-		[theme.breakpoints.up('sm')]: {
+		[theme.breakpoints.up('md')]: {
 			width: '100%'
 		}
 	},
 	imgDiv: {
 		marginRight: theme.spacing(10),
-		[theme.breakpoints.down('sm')]: { margin: 0 }
+		[theme.breakpoints.down('md')]: { margin: 0 }
 	},
 	img: {
 		height: '60vh',
 		[theme.breakpoints.down('1000')]: {
 			height: '40vh'
 		},
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('md')]: {
 			height: '30vh'
 		}
 	},
@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
 		zIndex: -1,
 		top: 100,
 		right: 0,
-		[theme.breakpoints.down('sm')]: {
+		[theme.breakpoints.down('md')]: {
 			height: '3%'
 		}
 	}
@@ -101,7 +101,7 @@ export default function Welcome(props) {
 						variant='contained'
 						color='primary'
 						component={ForwardNavLink}
-						smooth
+						mdooth
 						to='/#projects'
 						className={classes.infoBtn}
 					>
@@ -112,7 +112,7 @@ export default function Welcome(props) {
 						variant='contained'
 						color='secondary'
 						component={ForwardNavLink}
-						smooth
+						mdooth
 						to='/#experience'
 						className={classes.infoBtn}
 					>
