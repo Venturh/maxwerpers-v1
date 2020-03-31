@@ -110,7 +110,12 @@ export default function Contact2() {
 			link: 'https://play.google.com/store/apps/developer?id=Venturh&hl=en_US',
 			icon: 'GooglePlay'
 		},
-		{ title: 'LinkedIn', text: 'linkedinDesc', link: '', icon: 'Linkedin' }
+		{
+			title: 'LinkedIn',
+			text: 'linkedinDesc',
+			link: 'https://www.linkedin.com/in/max-werpers-9474251a5/',
+			icon: 'Linkedin'
+		}
 	]
 
 	const cardRight = [
@@ -122,7 +127,7 @@ export default function Contact2() {
 		},
 		{
 			title: 'Email',
-			text: 'info@maxwerpers.me',
+			text: 'contact@maxwerpers.me',
 			link: '',
 			icon: 'Email'
 		}
