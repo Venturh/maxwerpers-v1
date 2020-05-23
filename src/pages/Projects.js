@@ -89,7 +89,7 @@ export default function Projects() {
         operation.setContext({
           headers: {
             authorization: `Bearer ${atob(
-              "NjljOWNkMDFiM2IwZjk5ODcxYTc3MDkzOWVmMmVjOGI1ZGJhNmI0ZA=="
+              "MmYzOTVmZGFiZDIzNGRjM2IwMmY2ZDEzZmIyMTk0Zjk5ZTk5OThiZA"
             )}`,
           },
         });
